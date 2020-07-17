@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import userLogo from '../user-logo.svg';
+import userLogo from '../img/user-logo.svg';
 import '../css/style.css';
+import { FaUserAlt, FaLock } from 'react-icons/fa';
+
 
 class FormLogin extends Component {
     constructor(props) {
@@ -36,7 +38,7 @@ class FormLogin extends Component {
                         <h2 className="title">Title goes here</h2>
                         <div className="input-div one">
                             <div className="i">
-                                <i className="fas fa-envelope">x</i>
+                                <FaUserAlt />
                             </div>
                             <div className="div">
                                 <h5>Username</h5>
@@ -52,7 +54,7 @@ class FormLogin extends Component {
                         </div>
                         <div className="input-div pass">
                             <div className="i">
-                                <i className="fas fa-lock">x</i>
+                                <FaLock />
                             </div>
                             <div className="div">
                                 <h5>Password</h5>

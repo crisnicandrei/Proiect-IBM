@@ -54,7 +54,7 @@ form{
     margin: 25px 0;
     padding: 5px 0;
 	border-bottom: 2px solid #d9d9d9;
-	color:blue;
+	
 }
 
 .login-content .input-div.one{
@@ -66,11 +66,11 @@ form{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition: .3s;
+	font-size:20px;
 }
 
-.i i{
-	transition: .3s;
-}
+
 
 .input-div > div{
     position: relative;
@@ -114,7 +114,7 @@ form{
 	font-size: 15px;
 }
 
-.input-div.focus > .i > i{
+.input-div.focus > .i {
 	color: #1b3685;
 }
 
@@ -177,24 +177,11 @@ input.btn:hover{
         margin: 8px 0;
 	}
 
-	.img img{
-		width: 400px;
-	}
+	
 }
 
 @media screen and (max-width: 900px){
-
-
-	.img{
-		display: none;
-	}
-
-	.wave{
-        display: block;
-        opacity:25%;
-        z-index: -1;
-	}
-    
+ 
 	.login-content{
         justify-content: center;
      }
