@@ -13,6 +13,7 @@ class FormLogin extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
     }
     handleChange(evt) {
         this.setState({
@@ -24,16 +25,53 @@ class FormLogin extends Component {
     }
     handleSubmit(evt) {
         evt.preventDefault();
-        alert(`You typed ${this.state.username}!`)
+        alert(`You typed ${this.state.username} and ${this.state.password}!`)
         this.setState({
-            username: ''
+            username: '',
+            password: ''
         })
     }
+
+    /* Effect for form onMouseEnter and onMouseLeave */
+    mouseEnter() {
+        document.getElementById("formFocus").style.boxShadow = "1px 1px 20px 1px #1b3685";
+        document.getElementById("formFocus").style.transition = "all .7s";
+    }
+    mouseLeave() {
+        document.getElementById("formFocus").style.boxShadow = "1px 1px 5px 1px #1b3685";
+    }
+
+    /* Add and remove class focus for inputUser and inputPass on events Focus and Blur */
+    addClassUser() {
+        const inputUser = document.querySelector(".inputUser");
+        let parent = inputUser.parentNode.parentNode;
+        parent.classList.add("focus");
+    }
+    removeClassUser() {
+        const inputUser = document.querySelector(".inputUser");
+        let parent = inputUser.parentNode.parentNode;
+        if (inputUser.value === "") {
+            parent.classList.remove("focus");
+        }
+    }
+    addClassPass() {
+        const inputPass = document.querySelector(".inputPass");
+        let parent = inputPass.parentNode.parentNode;
+        parent.classList.add("focus");
+    }
+    removeClassPass() {
+        const inputPass = document.querySelector(".inputPass");
+        let parent = inputPass.parentNode.parentNode;
+        if (inputPass.value === "") {
+            parent.classList.remove("focus");
+        }
+    }
+
     render() {
         return (
             <div className='container'>
                 <div className="login-content">
-                    <form id="formFocus" className="form-design" onSubmit={this.handleSubmit}>
+                    <form id="formFocus" className="form-design" onSubmit={this.handleSubmit} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
                         <img src={userLogo} alt="Logo" />
                         <h2 className="title">Title goes here</h2>
                         <div className="input-div one">
@@ -44,11 +82,13 @@ class FormLogin extends Component {
                                 <h5>Username</h5>
 
                                 <input
+                                    onFocus={this.addClassUser}
+                                    onBlur={this.removeClassUser}
                                     type='text'
                                     name='username'
                                     value={this.state.username}
                                     onChange={this.handleChange}
-                                    className="input"
+                                    className="inputUser"
                                 />
                             </div>
                         </div>
@@ -59,11 +99,13 @@ class FormLogin extends Component {
                             <div className="div">
                                 <h5>Password</h5>
                                 <input
+                                    onFocus={this.addClassPass}
+                                    onBlur={this.removeClassPass}
                                     type='password'
                                     name='password'
                                     value={this.state.password}
                                     onChange={this.handleChange}
-                                    className="input" />
+                                    className="inputPass" />
                             </div>
                         </div>
 
