@@ -85,6 +85,7 @@ form{
 	color: #1b3685;
 	font-size: 18px;
 	transition: .3s;
+	font-weight: bold;
 }
 
 .input-div:before, .input-div:after{
