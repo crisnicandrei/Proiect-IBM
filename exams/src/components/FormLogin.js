@@ -73,13 +73,14 @@ class FormLogin extends Component {
                 <div className="login-content">
                     <form id="formFocus" className="form-design" onSubmit={this.handleSubmit} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
                         <img src={userLogo} alt="Logo" />
-                        <h2 className="title">Title goes here</h2>
+                        <h2 className="title">ExamHUB</h2>
                         <div className="input-div one">
                             <div className="i">
                                 <FaUserAlt />
                             </div>
                             <div className="div">
-                                <h5>Username</h5>
+                             
+                                <label htmlFor='username'>Username</label>
 
                                 <input
                                     onFocus={this.addClassUser}
@@ -97,7 +98,8 @@ class FormLogin extends Component {
                                 <FaLock />
                             </div>
                             <div className="div">
-                                <h5>Password</h5>
+                              
+                                <label htmlFor='password'>Password</label>
                                 <input
                                     onFocus={this.addClassPass}
                                     onBlur={this.removeClassPass}

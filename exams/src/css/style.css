@@ -43,7 +43,7 @@ form{
 .login-content h2{
 	margin: 15px 0;
 	color: #1b3685;
-	text-transform: uppercase;
+	
 	font-size: 2.9rem;
 }
 
@@ -77,7 +77,7 @@ form{
 	height: 45px;
 }
 
-.input-div > div > h5{
+.input-div > div > label{
 	position: absolute;
 	left: 10px;
 	top: 50%;
@@ -109,7 +109,7 @@ form{
 	width: 50%;
 }
 
-.input-div.focus > div > h5{
+.input-div.focus > div > label{
 	top: -5px;
 	font-size: 15px;
 }
