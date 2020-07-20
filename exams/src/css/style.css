@@ -4,10 +4,13 @@
 	box-sizing: border-box;
 }
 
+
 body{
     font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-
+	overflow: hidden;
+	background-image: url('../img/writing.jpg');
+	background-size:cover;
+	
 }
 /* Begin Form Login Style */
 .container{
@@ -16,7 +19,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;  
+    align-items: flex-end;  
 }
 
 
@@ -24,7 +27,9 @@ body{
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-    text-align: center;
+	text-align: center;
+	background-color: white;
+	border-radius: 8px;
 }
 
 

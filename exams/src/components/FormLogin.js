@@ -31,7 +31,7 @@ function FormLogin() {
                     onMouseLeave={() => setMouseEnter(false)}
                 >
                     <img src={userLogo} alt='Logo' />
-                    <h2 className='title'>Title goes here</h2>
+                    <h2 className='title'>ExamHUB</h2>
                     <div className={`input-div one ${userFocus ? "focus" : username === '' ? '' : "focus"}`}>
                         <div className='i'>
                             <FaUserAlt />
