@@ -10,6 +10,7 @@ body{
 	overflow: hidden;
 	background-image: url('../img/writing.jpg');
 	background-size:cover;
+	background-repeat: no-repeat;
 	
 }
 /* Begin Form Login Style */
@@ -173,25 +174,43 @@ input.btn:hover{
 
 
 @media screen and (max-width: 1000px){
-	form{
-        width: 290px;
-        padding: 1rem;
-        border-radius:8px;
-        box-shadow: 1px 1px 5px 1px #1b3685;
-        
-	}
-
-	.login-content h2{
-        font-size: 2.4rem;
-        margin: 8px 0;
-	}
-
 	
+	.formFocus{
+		width: 360px;
+		padding: 1rem;
+		border-radius:8px;
+		box-shadow: 1px 1px 5px 1px #1b3685;
+		transition: all .7s
+	}
+
+	.container{
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;  
+	}
 }
 
 @media screen and (max-width: 900px){
  
+	.formFocus{
+		width: 360px;
+		padding: 1rem;
+		border-radius:8px;
+		box-shadow: 1px 1px 5px 1px #1b3685;
+		transition: all .7s
+	}
 	.login-content{
         justify-content: center;
-     }
+	 }
+	 .container{
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;  
+	}
 }
