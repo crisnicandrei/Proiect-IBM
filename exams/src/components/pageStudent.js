@@ -6,31 +6,33 @@ import StudentCard from './StudentCard';
 
 
 export default class pageStudent extends Component {
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
         this.state = {
-            exams : [
+            exams: [
                 {
-                    materie:'asdf',
-                    data:'maine',
-                    profesor:'greconici'
+                    id: 1,
+                    materie: 'asdf',
+                    data: 'maine',
+                    profesor: 'greconici'
                 },
                 {
-                    materie:'ts',   
-                    data:'ieri',
-                    profesor:'dragomir'
+                    id: 2,
+                    materie: 'ts',
+                    data: 'ieri',
+                    profesor: 'dragomir'
                 }
             ]
         }
     }
     render() {
-        const examCard = this.state.exams.map (exam =>{
-            return <StudentCard 
-            exam={exam.materie} 
-            data={exam.data} 
-            profesor={exam.profesor} />})
-            
+        const examCard = this.state.exams.map(exam => {
+            return <StudentCard key={exam.id}
+                exam={exam.materie}
+                data={exam.data}
+                profesor={exam.profesor} />
+        })
+
         return (
             <div>
                 <NavbarStudent />

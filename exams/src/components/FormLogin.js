@@ -8,11 +8,19 @@ import { withRouter } from 'react-router-dom';
 function FormLogin(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [user] = useState({
+    const [users] = useState([{
         username: "gigel",
         password: "123",
         usertype: "student"
-    });
+    }, {
+        username: "gigelx",
+        password: "1234",
+        usertype: "prof"
+    }, {
+        username: "admin1",
+        password: "admin2",
+        usertype: "admin"
+    }]);
 
     const [mouseEnter, setMouseEnter] = useState(false)
 
@@ -21,19 +29,23 @@ function FormLogin(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (`${username}` === user.username && `${password}` === user.password) {
-            if (user.usertype === "prof") {
-                props.history.push('/prof');
-                console.log("Esti pe pagina profesor");
-            }
-            if (user.usertype === "student") {
-                props.history.push('/stud');
 
+        for (let i = 0; i < users.length; i++) {
+            if (`${username}` === users[i].username && `${password}` === users[i].password) {
+                if (users[i].usertype === "prof") {
+                    props.history.push('/prof');
+                    console.log("Esti pe pagina profesor");
+                }
+                if (users[i].usertype === "student") {
+                    props.history.push('/stud');
+
+                } if (users[i].usertype === "admin") {
+                    props.history.push('/admin');
+                }
+            } else {
+                console.log("Nu este ok");
             }
-        } else {
-            console.log("Nu este ok");
         }
-
 
 
         setUsername('')

@@ -4,12 +4,12 @@ import { FaBars } from 'react-icons/fa';
 //Import for Link router
 import { Link } from 'react-router-dom';
 
-function NavbarStudent() {
+function NavbarAdmin() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-dark">
 
-            <Link className="navbar-brand ml-5" to="/"><img className="logo-img" alt="" />Student</Link>
+            <Link className="navbar-brand ml-5" to="/"><img className="logo-img" alt="" />Admin</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span style={{ color: '#fff' }}><FaBars /></span>
             </button>
@@ -32,4 +32,4 @@ function NavbarStudent() {
         </nav>
     )
 }
-export default NavbarStudent;
+export default NavbarAdmin;
