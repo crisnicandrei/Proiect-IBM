@@ -3,9 +3,16 @@ import userLogo from '../img/user-logo.svg';
 import '../css/style.css';
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 
-function FormLogin() {
+import { withRouter } from 'react-router-dom';
+
+function FormLogin(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [user] = useState({
+        username: "gigel",
+        password: "123",
+        usertype: "student"
+    });
 
     const [mouseEnter, setMouseEnter] = useState(false)
 
@@ -13,9 +20,21 @@ function FormLogin() {
     const [passwordFocus, setPasswordFocus] = useState(false)
 
     function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+        if (`${username}` === user.username && `${password}` === user.password) {
+            if (user.usertype === "prof") {
+                props.history.push('/prof');
+                console.log("Esti pe pagina profesor");
+            }
+            if (user.usertype === "student") {
+                props.history.push('/stud');
 
-        alert(`You typed ${username} and ${password}!`)
+            }
+        } else {
+            console.log("Nu este ok");
+        }
+
+
 
         setUsername('')
         setPassword('')
@@ -72,4 +91,4 @@ function FormLogin() {
         </div>
     )
 }
-export default FormLogin;
+export default withRouter(FormLogin);

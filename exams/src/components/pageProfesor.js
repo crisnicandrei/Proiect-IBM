@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import NavbarProfesor from './layouts/NavbarProfesor';
 
 
-export default class pageProfesor extends Component {
+export default class PageProfesor extends Component {
     render() {
         return (
             <div>
