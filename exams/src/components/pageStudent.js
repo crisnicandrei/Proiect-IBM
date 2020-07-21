@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 //Components layout
 import NavbarStudent from './layouts/NavbarStudent';
 import StudentCard from './StudentCard';
+import {Row,Container,Col} from 'react-bootstrap/'
 
 
 export default class pageStudent extends Component {
@@ -21,6 +22,12 @@ export default class pageStudent extends Component {
                     materie: 'ts',
                     data: 'ieri',
                     profesor: 'dragomir'
+                },
+                {
+                    id: 3,
+                    materie: 'ts',
+                    data: 'ieri',
+                    profesor: 'dragomir'
                 }
             ]
         }
@@ -35,8 +42,13 @@ export default class pageStudent extends Component {
 
         return (
             <div>
-                <NavbarStudent />
-                {examCard}
+            <NavbarStudent />
+            <Container>
+                <Row md={4}
+                xs={1}>
+                 {examCard}
+                </Row>
+            </Container>
             </div>
         )
     }

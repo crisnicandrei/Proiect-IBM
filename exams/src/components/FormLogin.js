@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import userLogo from '../img/user-logo.svg';
-import '../css/style.css';
+import '../css/FormLogin.css';
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 
 import { withRouter } from 'react-router-dom';
@@ -53,7 +53,7 @@ function FormLogin(props) {
     }
 
     return (
-        <div className='container'>
+        <div className='containerForm'>
             <div className='login-content'>
                 <form
                     className={`formFocus ${mouseEnter ? 'enter' : ''} `}
