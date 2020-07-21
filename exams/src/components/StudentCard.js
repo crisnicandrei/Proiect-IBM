@@ -4,7 +4,10 @@ export default class StudentCard extends Component {
     render() {
         return (
             <div>
-                Student info will go here!
+                
+                <h4>Exam {this.props.exam} </h4>
+                <h4>Date {this.props.data}</h4>
+                <h4>Professor {this.props.profesor}</h4>
             </div>
         )
     }
