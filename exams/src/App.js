@@ -2,10 +2,10 @@ import React from 'react';
 import FormLogin from './components/FormLogin';
 import { Switch, Route } from 'react-router-dom';
 
-import PageProfesor from './components/pageProfesor';
-import PageStudent from './components/pageStudent';
-import PageAdmin from './components/pageAdmin';
-import FormProfessor from './components/FormProfessor'
+import PageProfesor from './components/professor/pageProfesor';
+import PageStudent from './components/student/pageStudent';
+import PageAdmin from './components/admin/pageAdmin';
+
 
 
 function App() {
@@ -13,13 +13,13 @@ function App() {
     <div className="App">
 
 
-      {/* <Switch >
+      <Switch >
         <Route path="/" exact component={FormLogin} />
-        <Route path="/prof" exact component={PageProfesor} />
+        <Route path="/prof/home" exact component={PageProfesor} />
+        <Route path="/prof/cerere" exact component={PageProfesor} />
         <Route path="/stud/home" exact component={PageStudent} />
-        <Route path="/admin" exact component={PageAdmin} />
-      </Switch> */}
-      <FormProfessor />
+        <Route path="/admin/home" exact component={PageAdmin} />
+      </Switch>
     </div>
   );
 }

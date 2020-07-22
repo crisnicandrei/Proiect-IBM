@@ -33,14 +33,14 @@ function FormLogin(props) {
         for (let i = 0; i < users.length; i++) {
             if (`${username}` === users[i].username && `${password}` === users[i].password) {
                 if (users[i].usertype === "prof") {
-                    props.history.push('/prof');
+                    props.history.push('/prof/home');
                     console.log("Esti pe pagina profesor");
                 }
                 if (users[i].usertype === "student") {
                     props.history.push('/stud/home');
 
                 } if (users[i].usertype === "admin") {
-                    props.history.push('/admin');
+                    props.history.push('/admin/home');
                 }
             } else {
                 console.log("Nu este ok");

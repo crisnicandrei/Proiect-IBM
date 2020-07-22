@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Col } from 'react-bootstrap/'
-import '../css/StudentCard.css'
+import { Col } from 'react-bootstrap'
+import '../../css/StudentCard.css'
 export default class StudentCard extends Component {
     render() {
         return (

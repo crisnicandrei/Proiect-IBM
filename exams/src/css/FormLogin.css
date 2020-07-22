@@ -8,13 +8,14 @@
 body{
     font-family: 'Poppins', sans-serif;
 	overflow: hidden;
-	background-image: url('../img/writing.jpg');
-	background-size:cover;
-	background-repeat: no-repeat;
+
 	
 }
 /* Begin Form Login Style */
 .containerForm{
+	background-image: url('../img/writing.jpg');
+	background-size:cover;
+	background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
     display: flex;

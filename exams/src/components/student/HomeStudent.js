@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import StudentCard from './StudentCard';
-import { Row, Container, Col } from 'react-bootstrap/'
+import { Row, Container, Col } from 'react-bootstrap'
 
 export default class HomeStudent extends Component {
     constructor(props) {

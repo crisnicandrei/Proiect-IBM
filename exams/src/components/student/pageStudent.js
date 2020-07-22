@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //Components layout
-import NavbarStudent from './layouts/NavbarStudent';
+import NavbarStudent from '../layouts/NavbarStudent';
 
 //Routers
 import { Switch, Route } from 'react-router-dom';
