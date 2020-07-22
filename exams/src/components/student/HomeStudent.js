@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+//Import Student Card component
 import StudentCard from './StudentCard';
+//Import bootstrap components
 import { Row, Container } from 'react-bootstrap'
 
 function HomeStudent() {

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+//Import bootstrap components
 import { Form, Button, Container } from 'react-bootstrap'
-import '../../css/FormProfessor.css'
+
+
 function FormProfessor() {
   const [yearOfStudy, setYearOfStudy] = useState('');
   const [semester, setSemester] = useState('');
@@ -62,8 +64,6 @@ function FormProfessor() {
           <Form.Label>Teacher</Form.Label>
           <Form.Control type="text" placeholder="Teacher Name" id='formBasicTeacher' name='teacher' value={teacher} onChange={(e) => setTeacher(e.target.value)} />
         </Form.Group>
-
-
 
         <div className='buttonProf'>
           <Button variant="primary" type="submit">

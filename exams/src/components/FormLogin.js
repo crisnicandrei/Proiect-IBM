@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
+//Import imgs
 import userLogo from '../img/user-logo.svg';
-import '../css/FormLogin.css';
+
+//Import Icons
 import { FaUserAlt, FaLock } from 'react-icons/fa';
 
+//Import router-dom
 import { withRouter } from 'react-router-dom';
+
+//Import CSS
+import '../css/FormLogin.css';
 
 function FormLogin(props) {
     const [username, setUsername] = useState('')

@@ -1,8 +1,9 @@
+/*Style for Request FORM */
 .buttonProf
 {
     
         display:flex;
         justify-content:center;
-        align-item:center
+        align-items:center
       
 }

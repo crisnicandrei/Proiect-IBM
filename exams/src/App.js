@@ -1,7 +1,10 @@
 import React from 'react';
-import FormLogin from './components/FormLogin';
+
+//Import router-dom
 import { Switch, Route } from 'react-router-dom';
 
+//Import components
+import FormLogin from './components/FormLogin';
 import PageProfesor from './components/professor/pageProfesor';
 import PageStudent from './components/student/pageStudent';
 import PageAdmin from './components/admin/pageAdmin';
@@ -11,8 +14,6 @@ import PageAdmin from './components/admin/pageAdmin';
 function App() {
   return (
     <div className="App">
-
-
       <Switch >
         <Route path="/" exact component={FormLogin} />
         <Route path="/prof/home" exact component={PageProfesor} />

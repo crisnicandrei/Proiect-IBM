@@ -1,12 +1,16 @@
 import React from 'react';
 
-//Components layout
+//Import Components layout and style
 import NavbarProfesor from '../layouts/NavbarProfesor';
-
-//Routers
+import '../../css/Navbar.css';
+//Import router-dom
 import { Switch, Route } from 'react-router-dom';
+//Import Professor Pages
 import FormProfessor from './FormProfessor';
 import HomeProfessor from './HomeProfessor';
+
+//Import style for Professor Pages
+import '../../css/Professor.css'
 
 function PageProfesor() {
 

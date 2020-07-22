@@ -1,6 +1,7 @@
 import React from 'react'
+//Import bootstrap components
 import { Col } from 'react-bootstrap'
-import '../../css/StudentCard.css'
+
 function StudentCard(props) {
 
     return (

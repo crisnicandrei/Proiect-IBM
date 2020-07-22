@@ -1,7 +1,14 @@
 import React from 'react'
-import NavbarAdmin from '../layouts/NavbarAdmin'
+
+//Import router-dom
 import { Route, Switch } from 'react-router-dom'
+
+//Import Admin Pages
 import HomeAdmin from './HomeAdmin'
+
+//Import Components layout and style
+import NavbarAdmin from '../layouts/NavbarAdmin'
+import '../../css/Navbar.css';
 
 function pageAdmin() {
 

@@ -1,3 +1,4 @@
+/*Begin style for Student Card */
 .StudentCard
 {
    background-color : #eee;
@@ -22,11 +23,4 @@ h4{
     width:30px;
     height:25px;
 }
-.navbar
-{
-    background-color: #3487d5;
-}
-.navbar .navbar-brand
-{
-    color:#221111
-}
+/*End of style for Student Card */

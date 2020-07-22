@@ -1,12 +1,17 @@
 import React from 'react';
 
-//Components layout
+//Components layout and style
 import NavbarStudent from '../layouts/NavbarStudent';
+import '../../css/Navbar.css';
 
-//Routers
+//import router-dom
 import { Switch, Route } from 'react-router-dom';
+
+//import Student Pages
 import HomeStudent from './HomeStudent';
 
+//Import css for Student
+import '../../css/Student.css'
 
 function pageStudent() {
 
