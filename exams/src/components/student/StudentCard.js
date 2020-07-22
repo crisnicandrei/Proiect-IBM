@@ -1,16 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Col } from 'react-bootstrap'
 import '../../css/StudentCard.css'
-export default class StudentCard extends Component {
-    render() {
-        return (
-            <Col className='StudentCard block-example border border-dark'  >
+function StudentCard(props) {
 
-                <h4>Exam {this.props.exam} </h4>
-                <h4>Date {this.props.data}</h4>
-                <h4>Professor {this.props.profesor}</h4>
+    return (
+        <Col className='StudentCard block-example border border-dark'  >
 
-            </Col>
-        )
-    }
+            <h4>Exam {props.exam} </h4>
+            <h4>Date {props.data}</h4>
+            <h4>Professor {props.profesor}</h4>
+
+        </Col>
+    )
+
 }
+export default StudentCard;
