@@ -35,22 +35,30 @@ function FormLogin(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-
+        let verify;
         for (let i = 0; i < users.length; i++) {
             if (`${username}` === users[i].username && `${password}` === users[i].password) {
                 if (users[i].usertype === "prof") {
+                    verify = true;
                     props.history.push('/prof/home');
-                    console.log("Esti pe pagina profesor");
-                }
-                if (users[i].usertype === "student") {
+                    break;
+                } else if (users[i].usertype === "student") {
+                    verify = true;
                     props.history.push('/stud/home');
-
-                } if (users[i].usertype === "admin") {
+                    break;
+                } else if (users[i].usertype === "admin") {
+                    verify = true;
                     props.history.push('/admin/home');
+                    break;
                 }
             } else {
-                console.log("Nu este ok");
+                verify = false;
             }
+        }
+        if (verify === false) {
+            alert("Este gresit");
+        } else {
+            console.log("Connectat cu succes");
         }
 
 
