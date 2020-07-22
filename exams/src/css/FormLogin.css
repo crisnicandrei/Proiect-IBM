@@ -175,7 +175,7 @@ input.btn:hover{
 /* End Form Login Style */
 
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 992px){
 	
 	.formFocus{
 		width: 360px;
@@ -193,10 +193,12 @@ input.btn:hover{
 		justify-content: center;
 		align-items: center;  
 		padding-right: 0;
+		background-size:0;
+		background-color: #1b3685;
 	}
 }
 
-@media screen and (max-width: 900px){
+@media screen and (max-width:576px){
  
 	.formFocus{
 		width: 360px;
@@ -216,5 +218,7 @@ input.btn:hover{
 		justify-content: center;
 		align-items: center;  
 		padding-right: 0;
+		background-size:0;
+		background-color: #1b3685;
 	}
 }

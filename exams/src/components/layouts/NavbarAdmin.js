@@ -15,7 +15,7 @@ function NavbarAdmin() {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav m-auto  text-uppercase ">
+                <ul className="navbar-nav ml-auto  text-uppercase ">
                     <li className="nav-item active">
                         <Link className="nav-link text-white ml-5" to="/">Home <span className="sr-only">(current)</span></Link>
                     </li>
