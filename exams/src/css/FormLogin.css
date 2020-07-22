@@ -13,8 +13,8 @@ body{
 }
 /* Begin Form Login Style */
 .containerForm{
-	background-image: url('../img/writing.jpg');
-	background-size:cover;
+	background-image: url('../img/mcq_illustration_insta_4x.jpg');
+	background-size:70%;
 	background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;

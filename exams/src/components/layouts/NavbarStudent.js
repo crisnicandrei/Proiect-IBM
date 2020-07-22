@@ -3,6 +3,7 @@ import React from 'react';
 import { FaBars } from 'react-icons/fa';
 //Import for Link router
 import { Link } from 'react-router-dom';
+// import '..//../css/NavbarStudent.css'
 
 function NavbarStudent() {
 
@@ -14,7 +15,8 @@ function NavbarStudent() {
                 <span style={{ color: '#fff' }}><FaBars /></span>
             </button>
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <div className="collapse navbar-collapse d-flex justify-content-end " id="navbarSupportedContent">
+                <div className='d-flex justify-content-end  '>
                 <ul className="navbar-nav m-auto  text-uppercase ">
                     <li className="nav-item active">
                         <Link className="nav-link text-white ml-5" to="home">Home <span className="sr-only">(current)</span></Link>
@@ -24,6 +26,7 @@ function NavbarStudent() {
                     </li>
 
                 </ul>
+                </div>
 
             </div>
         </nav>

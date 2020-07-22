@@ -15,4 +15,4 @@ function pageAdmin() {
     )
 
 }
-export default pageAdmin();
+export default pageAdmin;

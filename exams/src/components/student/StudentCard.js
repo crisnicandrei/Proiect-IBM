@@ -4,7 +4,7 @@ import '../../css/StudentCard.css'
 function StudentCard(props) {
 
     return (
-        <Col className='StudentCard block-example border border-dark'  >
+        <Col className='StudentCard block-example '  >
 
             <h4>Exam {props.exam} </h4>
             <h4>Date {props.data}</h4>

@@ -2,6 +2,10 @@
 {
    background-color : #eee;
     margin:20px;
-    border-radius:5px;
+    border-bottom: 17px solid rgba(28,110,164,0.44);
+border-radius: 24px 0px 30px 0px;
+    -webkit-box-shadow: 3px 34px 31px -23px rgba(153,150,153,1);
+    -moz-box-shadow: 3px 34px 31px -23px rgba(153,150,153,1);
+    box-shadow: 3px 34px 31px -23px rgba(153,150,153,1);
     
 }
