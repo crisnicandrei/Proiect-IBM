@@ -37,7 +37,7 @@ function FormLogin(props) {
                     console.log("Esti pe pagina profesor");
                 }
                 if (users[i].usertype === "student") {
-                    props.history.push('/stud');
+                    props.history.push('/stud/home');
 
                 } if (users[i].usertype === "admin") {
                     props.history.push('/admin');
