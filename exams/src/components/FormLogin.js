@@ -12,6 +12,7 @@ import { withRouter } from 'react-router-dom';
 import '../css/FormLogin.css';
 
 function FormLogin(props) {
+    const { history } = props;
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [users] = useState([{
@@ -26,6 +27,18 @@ function FormLogin(props) {
         username: "admin1",
         password: "admin2",
         usertype: "admin"
+    }, {
+        username: "admin7",
+        password: "123",
+        usertype: "admin"
+    }, {
+        username: "student",
+        password: "123",
+        usertype: "student"
+    }, {
+        username: "profesor",
+        password: "123",
+        usertype: "prof"
     }]);
 
     const [mouseEnter, setMouseEnter] = useState(false)
@@ -40,15 +53,15 @@ function FormLogin(props) {
             if (`${username}` === users[i].username && `${password}` === users[i].password) {
                 if (users[i].usertype === "prof") {
                     verify = true;
-                    props.history.push('/prof/home');
+                    history.push('/prof/home');
                     break;
                 } else if (users[i].usertype === "student") {
                     verify = true;
-                    props.history.push('/stud/home');
+                    history.push('/stud/home');
                     break;
                 } else if (users[i].usertype === "admin") {
                     verify = true;
-                    props.history.push('/admin/home');
+                    history.push('/admin/home');
                     break;
                 }
             } else {
