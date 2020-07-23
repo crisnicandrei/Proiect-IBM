@@ -8,7 +8,9 @@ import HomeAdmin from './HomeAdmin'
 
 //Import Components layout and style
 import NavbarAdmin from '../layouts/NavbarAdmin'
+import Footer from '../layouts/Footer';
 import '../../css/Navbar.css';
+
 
 function pageAdmin() {
 
@@ -18,6 +20,7 @@ function pageAdmin() {
             <Switch>
                 <Route path="/admin/home" component={HomeAdmin} />
             </Switch>
+            <Footer />
         </div>
     )
 
