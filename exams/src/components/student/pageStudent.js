@@ -12,7 +12,8 @@ import { Switch, Route } from 'react-router-dom';
 import HomeStudent from './HomeStudent';
 
 //Import css for Student
-import '../../css/Student.css'
+import '../../css/Student.css';
+
 
 
 function pageStudent() {

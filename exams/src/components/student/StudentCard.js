@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 //Import bootstrap components
 import { Col } from 'react-bootstrap'
 
@@ -18,3 +18,4 @@ function StudentCard(props) {
 
 }
 export default StudentCard;
+*/

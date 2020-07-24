@@ -1,51 +1,19 @@
-import React, { useState } from 'react';
-//Import Student Card component
-import StudentCard from './StudentCard';
-//Import bootstrap components
-import { Row, Container } from 'react-bootstrap'
+import React, { useContext } from 'react';
+import { StudentContext } from '../StudentContext';
+import ExamLayout from '../layouts/ExamLayout';
+//import { Container, Row } from 'react-bootstrap';
 
 function HomeStudent() {
-
-    const [exams] = useState([
-        {
-            id: 1,
-            materie: 'asdf',
-            data: 'maine',
-            profesor: 'greconici'
-        },
-        {
-            id: 2,
-            materie: 'ts',
-            data: 'ieri',
-            profesor: 'dragomir'
-        },
-        {
-            id: 3,
-            materie: 'ts',
-            data: 'azi',
-            profesor: 'dragomir'
-        }
-    ]
-    );
-    const examCard = exams.map(exam => {
-        return <StudentCard key={exam.id}
-            exam={exam.materie}
-            data={exam.data}
-            profesor={exam.profesor} />
-    })
-
+    const [exams] = useContext(StudentContext);
     return (
-        <div>
-            <Container>
-                <Row md={4}
-                    xs={1}>
-                    {examCard}
-                </Row>
-            </Container>
+        <div className="container-fluid">
+            <div className="row">
+                {exams.map((exam, index) =>
+                    <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} />
+                )}
+            </div>
+
         </div>
     )
-
-
 }
-
 export default HomeStudent;
