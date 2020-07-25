@@ -4,7 +4,7 @@ import React from 'react';
 //Import bootstrap components
 import { Col } from 'react-bootstrap'
 
-function ExamLayout({ materie, data, profesor,isAdmin }) {
+function ExamLayout({ materie, data, profesor,isAdmin,removeExam}) {
     /*
         const [exams] = useState([
             {
@@ -45,11 +45,17 @@ function ExamLayout({ materie, data, profesor,isAdmin }) {
             </div>
         )
     */
+   
+//    function removeExams(id)
+//    {
+//     console.log(id);
+//     removeExam(id)
+//    }
    const buttons=
    (
        <div>
-       <button>Edit</button>
-       <button>Delete</button>
+       <button >Edit</button>
+       <button onClick={removeExam}>Delete</button>
        </div>
    )
     return (
