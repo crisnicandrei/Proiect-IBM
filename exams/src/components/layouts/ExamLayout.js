@@ -4,7 +4,7 @@ import React from 'react';
 //Import bootstrap components
 import { Col } from 'react-bootstrap'
 
-function ExamLayout({ materie, data, profesor }) {
+function ExamLayout({ materie, data, profesor,isAdmin }) {
     /*
         const [exams] = useState([
             {
@@ -45,17 +45,26 @@ function ExamLayout({ materie, data, profesor }) {
             </div>
         )
     */
+   const buttons=
+   (
+       <div>
+       <button>Edit</button>
+       <button>Delete</button>
+       </div>
+   )
     return (
 
-        <div className='StudentCard col-md-3 col-12'>
+        <Col className='StudentCard col-md-3 col-sm-12'>
 
             <h4>Materia: {materie} </h4>
             <hr />
             <h4>Data: {data}</h4>
             <hr />
             <h4>Profesor: {profesor}</h4>
+            {isAdmin ? buttons : null}
+            
 
-        </div>
+        </Col>
 
     );
 

@@ -9,8 +9,11 @@ function HomeAdmin() {
         <div className="container-fluid">
             <div className="row">
                 {exams.map((exam, index) =>
-                    <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} />
+                // <div>
+                    <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} isAdmin={true} />
+                    
                 )}
+                 
             </div>
 
         </div>
