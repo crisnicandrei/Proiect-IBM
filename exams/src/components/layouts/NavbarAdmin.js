@@ -17,13 +17,13 @@ function NavbarAdmin() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ml-auto  text-uppercase ">
                     <li className="nav-item active">
-                        <Link className="nav-link text-white ml-5" to="/">Home <span className="sr-only">(current)</span></Link>
+                        <Link className="nav-link text-white ml-5" to="home">Home <span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-white ml-5" to="/">Test</Link>
+                        <Link className="nav-link text-white ml-5" to="adduser">Adauga Utilizator</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-white ml-5" to="/">Test</Link>
+                        <Link className="nav-link text-white ml-5" to="/">Log out</Link>
                     </li>
 
                 </ul>
