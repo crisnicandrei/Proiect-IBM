@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
-import { StudentContext } from '../StudentContext';
+
+//Import Context for Exams
+import { ExamsContext } from '../ExamsContext';
+
+//Import Layout for Exams
 import ExamLayout from '../layouts/ExamLayout';
 
 function HomeProfessor() {
 
-    const [exams] = useContext(StudentContext);
+    const [exams] = useContext(ExamsContext);
     return (
         <div className="container-fluid">
             <div className="row">

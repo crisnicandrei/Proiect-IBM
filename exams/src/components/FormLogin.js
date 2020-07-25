@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 //Import imgs
 import userLogo from '../img/user-logo.svg';
 
@@ -10,37 +10,15 @@ import { withRouter } from 'react-router-dom';
 
 //Import CSS
 import '../css/FormLogin.css';
+//Import LoginContext
+import { LoginContext } from './LoginContext';
 
 function FormLogin(props) {
     const { history } = props;
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [users] = useState([{
-        username: "gigel",
-        password: "123",
-        usertype: "student"
-    }, {
-        username: "gigelx",
-        password: "1234",
-        usertype: "prof"
-    }, {
-        username: "admin1",
-        password: "admin2",
-        usertype: "admin"
-    }, {
-        username: "admin7",
-        password: "123",
-        usertype: "admin"
-    }, {
-        username: "student",
-        password: "123",
-        usertype: "student"
-    }, {
-        username: "profesor",
-        password: "123",
-        usertype: "prof"
-    }]);
 
+    const [users] = useContext(LoginContext);
     const [mouseEnter, setMouseEnter] = useState(false)
 
     const [userFocus, setUserFocus] = useState(false)

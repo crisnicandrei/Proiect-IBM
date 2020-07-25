@@ -1,9 +1,8 @@
 import React, { useState, useEffect, createContext } from 'react';
-//import axios from 'axios';
 
-export const StudentContext = createContext();
+export const ExamsContext = createContext();
 
-export const StudentProvider = (props) => {
+export const ExamsProvider = (props) => {
 
     const [exams, setExams] = useState([]);
     const examene = [
@@ -36,8 +35,8 @@ export const StudentProvider = (props) => {
         listExams();
     }, []);
     return (
-        <StudentContext.Provider value={[exams, setExams]}>
+        <ExamsContext.Provider value={[exams, setExams]}>
             {props.children}
-        </StudentContext.Provider>
+        </ExamsContext.Provider>
     );
 }

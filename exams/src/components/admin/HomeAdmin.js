@@ -1,25 +1,27 @@
 import React, { useContext } from 'react';
-import { StudentContext } from '../StudentContext';
+
+//Import Context for Exams
+import { ExamsContext } from '../ExamsContext';
+//Import Layout for Exams
 import ExamLayout from '../layouts/ExamLayout';
 
 function HomeAdmin() {
 
-    
 
-    const [exams,setExams] = useContext(StudentContext);
-    function remove(id)
-    {
-        setExams(exams.filter(ex => ex.id != id))
+
+    const [exams, setExams] = useContext(ExamsContext);
+    function remove(id) {
+        setExams(exams.filter(ex => ex.id !== id))
     }
     return (
         <div className="container-fluid">
             <div className="row">
                 {exams.map((exam, index) =>
-                // <div>
-                    <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} isAdmin={true} removeExam={()=>remove(exam.id)}/>
-                    
+                    // <div>
+                    <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} isAdmin={true} removeExam={() => remove(exam.id)} />
+
                 )}
-                 
+
             </div>
 
         </div>

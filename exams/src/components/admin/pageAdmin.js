@@ -12,7 +12,7 @@ import Footer from '../layouts/Footer';
 import '../../css/Navbar.css';
 
 
-function pageAdmin() {
+function PageAdmin() {
 
     return (
         <div>
@@ -25,4 +25,4 @@ function pageAdmin() {
     )
 
 }
-export default pageAdmin;
+export default PageAdmin;
