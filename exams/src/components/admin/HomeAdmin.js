@@ -4,6 +4,8 @@ import React, { useContext } from 'react';
 import { ExamsContext } from '../ExamsContext';
 //Import Layout for Exams
 import ExamLayout from '../layouts/ExamLayout';
+//Import style for cards
+import '../../css/Admin.css';
 
 function HomeAdmin() {
 

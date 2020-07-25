@@ -1,10 +1,10 @@
 import React from 'react';
 //Import Student Card component
 //import StudentCard from './StudentCard';
-//Import bootstrap components
-import { Col } from 'react-bootstrap'
-
-function ExamLayout({ materie, data, profesor,isAdmin,removeExam}) {
+//Import Icons
+import { FaEdit } from 'react-icons/fa';
+import { MdDelete } from 'react-icons/md';
+function ExamLayout({ materie, data, profesor, isAdmin, removeExam }) {
     /*
         const [exams] = useState([
             {
@@ -45,22 +45,22 @@ function ExamLayout({ materie, data, profesor,isAdmin,removeExam}) {
             </div>
         )
     */
-   
-//    function removeExams(id)
-//    {
-//     console.log(id);
-//     removeExam(id)
-//    }
-   const buttons=
-   (
-       <div>
-       <button >Edit</button>
-       <button onClick={removeExam}>Delete</button>
-       </div>
-   )
+
+    //    function removeExams(id)
+    //    {
+    //     console.log(id);
+    //     removeExam(id)
+    //    }
+    const buttons =
+        (
+            <div>
+                <FaEdit className="icons-admin-card"></FaEdit>
+                <MdDelete className="icons-admin-card" onClick={removeExam}></MdDelete>
+            </div>
+        )
     return (
 
-        <Col className='StudentCard col-md-3 col-sm-12'>
+        <div className='StudentCard col-md-3 col-sm-12'>
 
             <h4>Materia: {materie} </h4>
             <hr />
@@ -68,9 +68,9 @@ function ExamLayout({ materie, data, profesor,isAdmin,removeExam}) {
             <hr />
             <h4>Profesor: {profesor}</h4>
             {isAdmin ? buttons : null}
-            
 
-        </Col>
+
+        </div>
 
     );
 

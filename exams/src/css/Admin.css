@@ -1,0 +1,10 @@
+.icons-admin-card{
+    cursor: pointer;
+    font-size: 1.8rem;
+    float: right;
+    padding-right: 0.1rem;
+}
+.icons-admin-card:hover{
+    color: #0398ac;
+}
+   
