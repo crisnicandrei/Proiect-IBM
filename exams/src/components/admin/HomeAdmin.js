@@ -11,16 +11,33 @@ function HomeAdmin() {
 
 
 
+    
     const [exams, setExams] = useContext(ExamsContext);
     function remove(id) {
         setExams(exams.filter(ex => ex.id !== id))
     }
+    function update(id,updatedField)
+    {
+        const updatedExam = exams.map(exam =>
+            {
+                if(exam.id === id)
+                {
+                    return{
+                        ...exam,[exams]:updatedField
+                    }
+                }
+                return exam;
+            })
+            setExams(updatedExam);
+    }
+    
+    
     return (
         <div className="container-fluid">
             <div className="row">
                 {exams.map((exam, index) =>
                     // <div>
-                    <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} isAdmin={true} removeExam={() => remove(exam.id)} />
+                    <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam = {() => update(exam.id,exam)} />
 
                 )}
 

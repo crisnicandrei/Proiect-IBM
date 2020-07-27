@@ -1,10 +1,11 @@
-import React from 'react';
+import React , {useState} from 'react';
 //Import Student Card component
 //import StudentCard from './StudentCard';
 //Import Icons
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
-function ExamLayout({ materie, data, profesor, isAdmin, removeExam }) {
+import { ExamsContext } from '../ExamsContext';
+function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) {
     /*
         const [exams] = useState([
             {
@@ -51,28 +52,72 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam }) {
     //     console.log(id);
     //     removeExam(id)
     //    }
+    // const [exams, setExams] = useContext(ExamsContext);
+   
+    const [isEditing,setEditing]=useState(false);
+    function toggleForm()
+    {
+        setEditing(!isEditing);
+    }
+    function handleChange(evt)
+    {
+        this.setState({
+            [evt.target.name]:evt.target.value
+        })
+    }
     const buttons =
         (
             <div>
-                <FaEdit className="icons-admin-card"></FaEdit>
+                <FaEdit className="icons-admin-card" onClick={toggleForm}></FaEdit>
                 <MdDelete className="icons-admin-card" onClick={removeExam}></MdDelete>
             </div>
         )
-    return (
+    function handleUpdate(e)
+    {
+        e.preventDefault();
+        this.updateExam;
+        setEditing(false);
+    }
 
-        <div className='StudentCard col-md-3 col-sm-12'>
+    let result ;
+    if(isEditing)
+        {
+            result = (
+                <div className='StudentCard col-md-3 col-sm-12'>
+                    <form onSubmit={handleUpdate}>
+                    <input type='text' value={materie} name='materie' onChange={handleChange}></input>
+                    <input type='text' value={data} name='data' onChange={handleChange}></input>
+                    <input type='text' value={profesor} name='profesor' onChange={handleChange}></input>
 
-            <h4>Materia: {materie} </h4>
-            <hr />
-            <h4>Data: {data}</h4>
-            <hr />
-            <h4>Profesor: {profesor}</h4>
-            {isAdmin ? buttons : null}
+                    <button>Save</button>
+                    </form>
+                </div>
+            )
 
+            
+        }
+        else
+        {
+            result=(
+                <div className='StudentCard col-md-3 col-sm-12'>
 
-        </div>
+                <h4>Materia: {materie} </h4>
+                <hr />
+                <h4>Data: {data}</h4>
+                <hr />
+                <h4>Profesor: {profesor}</h4>
+                {isAdmin ? buttons : null}
+    
+    
+            </div>
 
-    );
+            )
+        }
+    return result
+
+        
+
+    
 
 }
 
