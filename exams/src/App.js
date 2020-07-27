@@ -26,6 +26,7 @@ function App() {
             <Route path="/stud/home" exact component={PageStudent} />
             <Route path="/admin/home" exact component={PageAdmin} />
             <Route path="/admin/adduser" exact component={PageAdmin} />
+            <Route path="/admin/userslist" exact component={PageAdmin} />
           </Switch>
 
         </div>

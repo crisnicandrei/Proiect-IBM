@@ -60,15 +60,15 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam }) {
         )
     return (
 
-        <div className='StudentCard col-md-3 col-sm-12'>
-
-            <h4>Materia: {materie} </h4>
-            <hr />
-            <h4>Data: {data}</h4>
-            <hr />
-            <h4>Profesor: {profesor}</h4>
-            {isAdmin ? buttons : null}
-
+        <div className='col-md-4 col-12'>
+            <div className="StudentCard">
+                <h4>Materia: {materie} </h4>
+                <hr />
+                <h4>Data: {data}</h4>
+                <hr />
+                <h4>Profesor: {profesor}</h4>
+                {isAdmin ? buttons : null}
+            </div>
 
         </div>
 

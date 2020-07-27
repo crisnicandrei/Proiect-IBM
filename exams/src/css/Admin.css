@@ -3,8 +3,23 @@
     font-size: 1.8rem;
     float: right;
     padding-right: 0.1rem;
+    
 }
 .icons-admin-card:hover{
-    color: #0398ac;
+    color: rgb(0, 212, 250);
 }
-   
+.Userlist-card{
+    background-color : #eee;
+    color:#2e69a1;
+     border-left: 10px solid transparent;
+     border-radius: 24px 9px 8px 0px;
+     -webkit-box-shadow: 3px 34px 31px -23px rgba(153,150,153,1);
+     -moz-box-shadow: 3px 34px 31px -23px rgba(153,150,153,1);
+     box-shadow: 3px 34px 31px -23px rgba(153,150,153,1);
+     padding:35px;
+}
+
+.Userlist-card:hover{
+    background-color: #2e69a1;
+    color:#eee;
+}
