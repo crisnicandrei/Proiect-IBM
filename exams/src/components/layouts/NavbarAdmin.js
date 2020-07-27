@@ -20,9 +20,6 @@ function NavbarAdmin() {
                         <Link className="nav-link  ml-5" to="home">Home <span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link ml-5" to="adduser">Adauga Utilizator</Link>
-                    </li>
-                    <li className="nav-item">
                         <Link className="nav-link ml-5" to="userslist">Lista Utilizatori</Link>
                     </li>
                     <li className="nav-item">

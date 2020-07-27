@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router-dom'
 
 //Import Admin Pages
 import HomeAdmin from './HomeAdmin'
-import AddUser from './AddUser';
 import UsersList from './UsersList';
 
 //Import Components layout and style
@@ -22,7 +21,6 @@ function PageAdmin() {
             <NavbarAdmin />
             <Switch>
                 <Route path="/admin/home" exact component={HomeAdmin} />
-                <Route path="/admin/adduser" exact component={AddUser} />
                 <Route path="/admin/userslist" exact component={UsersList} />
             </Switch>
             <Footer />

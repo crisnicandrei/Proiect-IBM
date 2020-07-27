@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { LoginContext } from '../LoginContext';
 import UsersLayout from '../layouts/UsersLayout';
+import AddUser from './AddUser';
 
 export default function UsersList() {
     const [users, setUsers] = useContext(LoginContext);
@@ -21,6 +22,14 @@ export default function UsersList() {
                 {users.map((user, index) =>
                     <UsersLayout username={user.username} password={user.password} usertype={user.usertype} removeUsers={() => removeUser(user.username)} key={index} />
                 )}
+            </div>
+            <div className="row">
+                <div className="col-12 text-center mt-5 mb-5">
+                    <h1>Adauga un nou utilizator</h1>
+                </div>
+            </div>
+            <div className="row">
+                <AddUser />
             </div>
 
         </div>
