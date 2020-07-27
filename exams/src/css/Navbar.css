@@ -6,3 +6,10 @@
 {
     color:#221111
 }
+
+a.nav-link{
+    color:#fff;
+}
+a.nav-link:hover{
+    color:#98d1ff
+}
