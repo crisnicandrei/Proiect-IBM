@@ -28,17 +28,28 @@ export default function AddUser() {
 
     const addUser = e => {
         e.preventDefault();
-        if (usertype === "") {
-            alert("Trebuie selectata o optiune");
-        } else if (username !== "" || password !== "") {
-            alert(`Utilizatorul: ${username} a fost adaugat cu succes! Lungimea obiect ${users.length + 1}`)
-            setUsers(prevUser => [...prevUser, { username: username, password: password, usertype: usertype }])
-            setUsername('');
-            setPassword('');
-            setUsertype('');
+        let verifyUser = users.find(user => user.username === username);
+        if (verifyUser === undefined) {
+            if (usertype === "") {
+                alert("Trebuie selectata o optiune");
+            }
+            else if (username !== "" || password !== "") {
+
+                alert(`Utilizatorul: ${username} a fost adaugat cu succes! Lungimea obiect ${users.length + 1}`)
+                setUsers(prevUser => [...prevUser, { username: username, password: password, usertype: usertype }])
+                setUsername("");
+                setPassword("");
+
+
+            } else {
+                alert("Trebuie setata o parola si un nume");
+            }
         } else {
-            alert("Trebuie setata o parola si un nume");
+            alert("Utilizatorul exista deja");
+            setUsername("");
+            setPassword("");
         }
+
 
     }
     console.log(users);
