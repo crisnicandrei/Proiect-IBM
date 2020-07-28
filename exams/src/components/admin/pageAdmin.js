@@ -11,6 +11,7 @@ import UsersList from './UsersList';
 import NavbarAdmin from '../layouts/NavbarAdmin'
 import Footer from '../layouts/Footer';
 import '../../css/Navbar.css';
+import PenddingExams from './PendingExams';
 
 
 
@@ -22,6 +23,7 @@ function PageAdmin() {
             <Switch>
                 <Route path="/admin/home" exact component={HomeAdmin} />
                 <Route path="/admin/userslist" exact component={UsersList} />
+                <Route path="/admin/pend" exact component={PenddingExams} />
             </Switch>
             <Footer />
         </div>

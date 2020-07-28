@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 //Import bootstrap components
 import { Form, Button, Container } from 'react-bootstrap'
+import { wExamsContext } from '../ExamsContext';
 
+
+import { v4 as uuidv4 } from 'uuid';
 
 function FormProfessor() {
+  const [wExams, setWExams] = useContext(wExamsContext);
   const [yearOfStudy, setYearOfStudy] = useState('');
   const [semester, setSemester] = useState('');
   const [faculty, setFaculty] = useState('');
@@ -14,7 +18,13 @@ function FormProfessor() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    alert(`An :${yearOfStudy} Semestru: ${semester} Facultate: ${faculty} Numar de locuri: ${nSeats} Curs:${course} Profesor:${teacher}`);
+    setWExams(prevExams => [...prevExams, {
+      id: uuidv4(),
+      materie: course,
+      data: yearOfStudy,
+      profesor: teacher,
+      status: 'asteptare'
+    }])
     setYearOfStudy('');
     setSemester('');
     setFaculty('');
@@ -22,7 +32,7 @@ function FormProfessor() {
     setCourse('');
     setTeacher('');
   }
-
+  console.log(wExams);
   return (
     <Container>
       <Form onSubmit={handleSubmit}>

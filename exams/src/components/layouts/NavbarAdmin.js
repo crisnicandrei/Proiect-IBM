@@ -23,6 +23,9 @@ function NavbarAdmin() {
                         <Link className="nav-link ml-5" to="userslist">Lista Utilizatori</Link>
                     </li>
                     <li className="nav-item">
+                        <Link className="nav-link ml-5" to="pend">Examene in asteptare</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="nav-link  ml-5" to="/">Log out</Link>
                     </li>
 

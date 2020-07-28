@@ -1,11 +1,12 @@
-import React , {useState,useContext} from 'react';
+import React, { useState, useContext } from 'react';
 //Import Student Card component
 //import StudentCard from './StudentCard';
 //Import Icons
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { ExamsContext } from '../ExamsContext';
-function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) {
+import { AiFillFileAdd } from 'react-icons/ai';
+function ExamLayout({ materie, data, profesor, isAdmin, removeExam, updateExam, status, isPend, addExam, deleteExam }) {
     /*
         const [exams] = useState([
             {
@@ -47,24 +48,21 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) 
         )
     */
 
-       function removeExams(id)
-       {
+    function removeExams(id) {
         console.log(id);
         removeExam(id)
-       }
+    }
     const [exams, setExams] = useContext(ExamsContext);
-   
-    const [isEditing,setEditing]=useState(false);
-    function toggleForm()
-    {
+
+    const [isEditing, setEditing] = useState(false);
+    function toggleForm() {
         setEditing(!isEditing);
     }
-    const handleChange = (evt) =>
-    {
-        
-            setExams(evt.target.value)
+    const handleChange = (evt) => {
+
+        setExams(evt.target.value)
     }
-    
+
     const buttons =
         (
             <div>
@@ -72,53 +70,62 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) 
                 <MdDelete className="icons-admin-card" onClick={removeExam}></MdDelete>
             </div>
         )
-    function handleUpdate(e)
-    {
+
+    const statusW = (
+        <div>
+            <hr />
+            <h4>Status: {status}</h4>
+            <AiFillFileAdd className="icons-admin-card" onClick={addExam}></AiFillFileAdd>
+            <MdDelete className="icons-admin-card" onClick={deleteExam}></MdDelete>
+        </div>
+    )
+
+    function handleUpdate(e) {
         // e.preventDefault();
         // updateExam(exams.id,e.target.value)
         // setEditing(false);
     }
 
-    let result ;
-    if(isEditing)
-        {
-            result = (
-                <div className='StudentCard col-md-3 col-sm-12'>
-                    <form onSubmit={handleUpdate}>
-                    <input type='text' value={materie} name='materie' onChange={handleChange}/>
-                    <input type='text' value={data} name='data' onChange={handleChange}/>
-                    <input type='text' value={profesor} name='profesor' onChange={handleChange}/>
+    let result;
+    if (isEditing) {
+        result = (
+            <div className='StudentCard col-md-3 col-sm-12'>
+                <form onSubmit={handleUpdate}>
+                    <input type='text' value={materie} name='materie' onChange={handleChange} />
+                    <input type='text' value={data} name='data' onChange={handleChange} />
+                    <input type='text' value={profesor} name='profesor' onChange={handleChange} />
 
                     <button>Save</button>
-                    </form>
+                </form>
+            </div>
+        )
+
+
+    }
+    else {
+        result = (
+            <div className='col-md-4 col-sm-12'>
+                <div className="StudentCard">
+                    <h4>Materia: {materie} </h4>
+                    <hr />
+                    <h4>Data: {data}</h4>
+                    <hr />
+                    <h4>Profesor: {profesor}</h4>
+
+                    {isPend && statusW}
+                    {isAdmin ? buttons : null}
+
                 </div>
-            )
-
-            
-        }
-        else
-        {
-            result=(
-                <div className='StudentCard col-md-3 col-sm-12'>
-
-                <h4>Materia: {materie} </h4>
-                <hr />
-                <h4>Data: {data}</h4>
-                <hr />
-                <h4>Profesor: {profesor}</h4>
-                {isAdmin ? buttons : null}
-    
-    
             </div>
 
-            )
-        }
+        )
+    }
     return result
 }
 
-        
 
-    
+
+
 
 
 
