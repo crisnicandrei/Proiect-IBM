@@ -59,12 +59,12 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) 
     {
         setEditing(!isEditing);
     }
-    // function handleChange(evt)
-    // {
+    const handleChange = (evt) =>
+    {
         
-    //         setExams([evt.target.name]:evt.target.value)
-    //     }
-    // }
+            setExams(evt.target.value)
+    }
+    
     const buttons =
         (
             <div>
@@ -72,22 +72,22 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) 
                 <MdDelete className="icons-admin-card" onClick={removeExam}></MdDelete>
             </div>
         )
-    // function handleUpdate(e)
-    // {
-    //     e.preventDefault();
-    //     updateExam(e.target.value)
-    //     setEditing(false);
-    //}
+    function handleUpdate(e)
+    {
+        // e.preventDefault();
+        // updateExam(exams.id,e.target.value)
+        // setEditing(false);
+    }
 
     let result ;
     if(isEditing)
         {
             result = (
                 <div className='StudentCard col-md-3 col-sm-12'>
-                    <form /*onSubmit={handleUpdate}*/>
-                    <input type='text' value={materie} name='materie' /*onChange={handleChange}*//>
-                    <input type='text' value={data} name='data' /*onChange={handleChange}*//>
-                    <input type='text' value={profesor} name='profesor' /*onChange={handleChange}*//>
+                    <form onSubmit={handleUpdate}>
+                    <input type='text' value={materie} name='materie' onChange={handleChange}/>
+                    <input type='text' value={data} name='data' onChange={handleChange}/>
+                    <input type='text' value={profesor} name='profesor' onChange={handleChange}/>
 
                     <button>Save</button>
                     </form>

@@ -7,6 +7,8 @@ import ExamLayout from '../layouts/ExamLayout';
 //Import style for cards
 import '../../css/Admin.css';
 
+import AddExam from './AddExam'
+
 function HomeAdmin() {
 
 
@@ -18,17 +20,17 @@ function HomeAdmin() {
     }
     function update(id,updatedField)
     {
-        // const updatedExam = exams.map(exam =>
-        //     {
-        //         if(exam.id === id)
-        //         {
-        //             return{
-        //                 ...exam,[exams]:updatedField
-        //             }
-        //         }
-        //         return exam;
-        //     })
-        //     setExams(updatedExam);
+        const updatedExam = exams.map(exam =>
+            {
+                if(exam.id === id)
+                {
+                    return{
+                        ...exam,[exams]:updatedField
+                    }
+                }
+                return exam;
+            })
+            setExams(updatedExam);
         console.log(updatedField);
     }
     
@@ -42,6 +44,9 @@ function HomeAdmin() {
 
                 )}
 
+            </div>
+            <div className='row'>
+                <AddExam/>
             </div>
 
         </div>
