@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState,useContext} from 'react';
 //Import Student Card component
 //import StudentCard from './StudentCard';
 //Import Icons
@@ -47,12 +47,12 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) 
         )
     */
 
-    //    function removeExams(id)
-    //    {
-    //     console.log(id);
-    //     removeExam(id)
-    //    }
-    // const [exams, setExams] = useContext(ExamsContext);
+       function removeExams(id)
+       {
+        console.log(id);
+        removeExam(id)
+       }
+    const [exams, setExams] = useContext(ExamsContext);
    
     const [isEditing,setEditing]=useState(false);
     function toggleForm()
@@ -61,9 +61,9 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) 
     }
     // function handleChange(evt)
     // {
-    //     this.setState({
-    //         [evt.target.name]:evt.target.value
-    //     })
+        
+    //         setExams([evt.target.name]:evt.target.value)
+    //     }
     // }
     const buttons =
         (
@@ -75,9 +75,9 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) 
     // function handleUpdate(e)
     // {
     //     e.preventDefault();
-    //     this.updateExam;
+    //     updateExam(e.target.value)
     //     setEditing(false);
-    // }
+    //}
 
     let result ;
     if(isEditing)
@@ -85,9 +85,9 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) 
             result = (
                 <div className='StudentCard col-md-3 col-sm-12'>
                     <form /*onSubmit={handleUpdate}*/>
-                    <input type='text' value={materie} name='materie' /*onChange={handleChange}*/></input>
-                    <input type='text' value={data} name='data' /*onChange={handleChange}*/></input>
-                    <input type='text' value={profesor} name='profesor' /*onChange={handleChange}*/></input>
+                    <input type='text' value={materie} name='materie' /*onChange={handleChange}*//>
+                    <input type='text' value={data} name='data' /*onChange={handleChange}*//>
+                    <input type='text' value={profesor} name='profesor' /*onChange={handleChange}*//>
 
                     <button>Save</button>
                     </form>
@@ -114,11 +114,12 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam,updateExam}) 
             )
         }
     return result
+}
 
         
 
     
 
-}
+
 
 export default ExamLayout;
