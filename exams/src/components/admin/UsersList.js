@@ -15,7 +15,7 @@ export default function UsersList() {
         <div className="container-fluid">
             <div className="row">
                 <div className="col-12 text-center mt-5 mb-5">
-                    <h1>Lista Utilizatorilor</h1>
+                    <h1 className="title">Lista Utilizatorilor</h1>
                 </div>
             </div>
             <div className="row">
@@ -25,7 +25,7 @@ export default function UsersList() {
             </div>
             <div className="row">
                 <div className="col-12 text-center mt-5 mb-5">
-                    <h1>Adauga un nou utilizator</h1>
+                    <h1 className="title">Adauga un nou utilizator</h1>
                 </div>
             </div>
             <div className="row">

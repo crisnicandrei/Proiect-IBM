@@ -8,6 +8,7 @@
 .icons-admin-card:hover{
     color: rgb(0, 212, 250);
 }
+/* Design for users card */
 .Userlist-card{
     background-color : #eee;
     color:#2e69a1;
@@ -23,3 +24,13 @@
     background-color: #2e69a1;
     color:#eee;
 }
+/* End of design for users card */
+
+/* Design for title */
+.title{
+    border-bottom: 1px solid #3487d5;
+    color:#3487d5;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+/* End of design for title */

@@ -3,8 +3,10 @@ import React, { useState, useContext } from 'react';
 import { LoginContext } from '../LoginContext';
 
 //Import bootstrap components
-import { Form, Button, Container } from 'react-bootstrap'
+import { Form, Container } from 'react-bootstrap'
 
+//Import Icons
+import { FaUserAlt, FaLock, FaUsers } from 'react-icons/fa';
 
 export default function AddUser() {
     const [users, setUsers] = useContext(LoginContext);
@@ -55,17 +57,17 @@ export default function AddUser() {
     console.log(users);
     return (
         <Container>
-            <Form onSubmit={addUser}>
+            <Form className="formDesign" onSubmit={addUser}>
                 <Form.Group controlId="formUsername">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label><FaUserAlt className="form-icons" />Username</Form.Label>
                     <Form.Control type="text" name="name" value={username} onChange={updateName} />
                 </Form.Group>
                 <Form.Group controlId="formPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label><FaLock className="form-icons" />Password</Form.Label>
                     <Form.Control type="password" name="password" value={password} onChange={updatePass} />
                 </Form.Group>
                 <Form.Group controlId="formUsertype">
-                    <Form.Label>Usertype</Form.Label>
+                    <Form.Label><FaUsers className="form-icons" />Usertype</Form.Label>
                     <Form.Control as="select" name="usertype" defaultValue="" onChange={updateUsertype} custom >
                         <option value="" disabled>Please select an item</option>
                         <option value={admin} >Admin</option>
@@ -73,7 +75,11 @@ export default function AddUser() {
                         <option value={prof}>Profesor</option>
                     </Form.Control>
                 </Form.Group>
-                <Button type="submit">Submit</Button>
+                <div className='buttonProf'>
+                    <button className="buttonDesign" type="submit">
+                        Submit
+                    </button>
+                </div>
 
             </Form>
         </Container>

@@ -34,7 +34,10 @@ function HomeAdmin() {
     console.log(exams);
     return (
         <div className="container-fluid">
-            <div className="row">
+            <div className="row mt-5">
+                <div className="col-12 text-center"><h1 className="title">Lista examenelor</h1></div>
+            </div>
+            <div className="row mt-5">
                 {exams.map((exam, index) =>
                     // <div>
                     <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id)} />
@@ -43,7 +46,7 @@ function HomeAdmin() {
 
             </div>
             <div className="row mt-5">
-                <div className="col-12 text-center"><h1>Adauga un examen</h1></div>
+                <div className="col-12 text-center"><h1 className="title">Adauga un examen</h1></div>
             </div>
             <div className='row mt-5'>
                 <AddExam />

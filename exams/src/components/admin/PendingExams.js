@@ -20,7 +20,7 @@ function PenddingExams() {
     return (
         <div className="container-fluid">
             <div className="row mt-5">
-                <div className="col-12 text-center"><h1>Examene in Asteptare</h1></div>
+                <div className="col-12 text-center"><h1 className="title">Examene in Asteptare</h1></div>
             </div>
             <div className="row mt-5">
                 {wExams.map((wexam, index) =>

@@ -3,7 +3,11 @@ import React, { useState, useContext } from 'react'
 import { ExamsContext } from '../ExamsContext'
 
 
-import { Form, Button, Container } from 'react-bootstrap'
+import { Form, Container } from 'react-bootstrap'
+
+//Import Icons
+import { MdBook } from 'react-icons/md';
+import { GoPerson, GoCalendar } from 'react-icons/go';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -43,21 +47,25 @@ export default function AddExam() {
     return (
 
         <Container>
-            <Form onSubmit={addExam}>
+            <Form className="formDesign" onSubmit={addExam}>
                 <Form.Group controlId="formMaterie">
-                    <Form.Label>Materie</Form.Label>
+                    <Form.Label><MdBook className="form-icons" />Materie</Form.Label>
                     <Form.Control type="text" name="materie" value={materie} onChange={updateMaterie} />
                 </Form.Group>
                 <Form.Group controlId="formData">
-                    <Form.Label>Data</Form.Label>
+                    <Form.Label><GoCalendar className="form-icons" />Data</Form.Label>
                     <Form.Control type="text" name="data" value={data} onChange={updateData} />
                 </Form.Group>
                 <Form.Group controlId="formProfesor">
-                    <Form.Label>Profesor</Form.Label>
+                    <Form.Label><GoPerson className="form-icons" />Profesor</Form.Label>
                     <Form.Control type="text" name="profesor" value={profesor} onChange={updateProfesor} />
                 </Form.Group>
 
-                <Button type="submit">Submit</Button>
+                <div className='buttonProf'>
+                    <button className="buttonDesign" type="submit">
+                        Submit
+                    </button>
+                </div>
 
             </Form>
         </Container>
