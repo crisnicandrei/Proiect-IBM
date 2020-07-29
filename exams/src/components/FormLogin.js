@@ -12,6 +12,8 @@ import { withRouter } from 'react-router-dom';
 import '../css/FormLogin.css';
 //Import LoginContext
 import { LoginContext } from './LoginContext';
+import * as ROUTES from './Constants/routes'
+
 
 function FormLogin(props) {
     const { history } = props;
@@ -31,15 +33,15 @@ function FormLogin(props) {
             if (`${username}` === users[i].username && `${password}` === users[i].password) {
                 if (users[i].usertype === "prof") {
                     verify = true;
-                    history.push('/prof/home');
+                    history.push(ROUTES.PROFHOME);
                     break;
                 } else if (users[i].usertype === "student") {
                     verify = true;
-                    history.push('/stud/home');
+                    history.push(ROUTES.STUDENTHOME);
                     break;
                 } else if (users[i].usertype === "admin") {
                     verify = true;
-                    history.push('/admin/home');
+                    history.push(ROUTES.ADMINHOME);
                     break;
                 }
             } else {

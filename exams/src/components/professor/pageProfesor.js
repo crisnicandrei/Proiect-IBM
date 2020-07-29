@@ -13,6 +13,7 @@ import HomeProfessor from './HomeProfessor';
 
 //Import style for Professor Pages
 import '../../css/Professor.css'
+import * as ROUTES from '../Constants/routes'
 
 
 function PageProfesor() {
@@ -21,8 +22,8 @@ function PageProfesor() {
         <div>
             <NavbarProfesor />
             <Switch>
-                <Route path="/prof/home" exact component={HomeProfessor} />
-                <Route path="/prof/cerere" exact component={FormProfessor} />
+                <Route path={ROUTES.PROFHOME} exact component={HomeProfessor} />
+                <Route path={ROUTES.PROFCERERE} exact component={FormProfessor} />
             </Switch>
             <Footer />
         </div>

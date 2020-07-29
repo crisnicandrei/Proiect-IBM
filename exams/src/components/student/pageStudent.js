@@ -14,6 +14,8 @@ import HomeStudent from './HomeStudent';
 //Import css for Student
 import '../../css/Student.css';
 
+import * as ROUTES from '../Constants/routes'
+
 
 
 function pageStudent() {
@@ -23,7 +25,7 @@ function pageStudent() {
         <div>
             <NavbarStudent />
             <Switch>
-                <Route path="/stud/home" component={HomeStudent} />
+                <Route path={ROUTES.STUDENTHOME} component={HomeStudent} />
             </Switch>
             <Footer />
         </div>
