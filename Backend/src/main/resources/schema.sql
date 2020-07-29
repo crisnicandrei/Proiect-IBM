@@ -1,0 +1,45 @@
+CREATE SEQUENCE admin_sequence START WITH 1 INCREMENT BY 1 CACHE 50;
+CREATE SEQUENCE exam_sequence START WITH 1 INCREMENT BY 1 CACHE 50;
+CREATE SEQUENCE students_sequence START WITH 1 INCREMENT BY 1 CACHE 50;
+CREATE SEQUENCE teacher_sequence START WITH 1 INCREMENT BY 1 CACHE 50;
+CREATE SEQUENCE planning_sequence START WITH 1 INCREMENT BY 1 CACHE 50;
+
+CREATE TABLE IF NOT EXISTS admin (
+    id INTEGER NOT NULL PRIMARY KEY,
+    email VARCHAR(50),
+    name_a VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS exam (
+    id INTEGER NOT NULL PRIMARY KEY,
+    data DATE,
+    seats INTEGER,
+    yearOfStudy INTEGER,
+    semester INTEGER,
+    academicyear INTEGER,
+    subject VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS students (
+    id INTEGER NOT NULL PRIMARY KEY,
+    name_s VARCHAR(50),
+    email VARCHAR(50),
+    yearOfStudy INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS teacher (
+    id INTEGER NOT NULL PRIMARY KEY,
+    name_t VARCHAR(50),
+    email VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS planning (
+    id INTEGER NOT NULL PRIMARY KEY,
+    exam_id INTEGER,
+    student_id INTEGER,
+    prof_id INTEGER,
+    FOREIGN KEY (exam_id) REFERENCES exam(id),
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (prof_id) REFERENCES teacher(id)
+);
+
