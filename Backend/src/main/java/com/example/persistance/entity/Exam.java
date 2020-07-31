@@ -1,5 +1,6 @@
 package com.example.persistance.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,26 +8,28 @@ import java.util.Date;
 
 @Entity
 public class Exam {
+
     @Id
     @GeneratedValue
-
     private int id;
     private Date date;
     private int seats;
     private int yearOfStudy;
     private int semester;
     private int academycYear;
-    private String subject;
+    private String course;
+    private String faculty;
 
 
-
-    public Exam(Date date, int seats, int yearOfStudy, int semester, int academycYear, String subject) {
+    public Exam(int id,Date date, int seats, int yearOfStudy, int semester, int academycYear, String course,String faculty) {
+        this.id = id;
         this.date = date;
         this.seats = seats;
         this.yearOfStudy = yearOfStudy;
         this.semester = semester;
         this.academycYear = academycYear;
-        this.subject = subject;
+        this.course = course;
+        this.faculty = faculty;
     }
 
     public int getId() {
@@ -73,15 +76,19 @@ public class Exam {
         this.semester = semester;
     }
 
-    public void setAcademycYear(int academy) {
+    public void setAcademycYear(int academycYear) {
         this.academycYear = academycYear;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getCourse() {
+        return course;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setCourse(String course) {
+        this.course = course;
     }
+
+    public String getFaculty() { return faculty; }
+
+    public void setFaculty(String faculty) { this.faculty = faculty; }
 }

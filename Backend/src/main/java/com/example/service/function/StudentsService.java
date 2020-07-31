@@ -16,8 +16,12 @@ public class StudentsService {
     public List<Exam> getExams() {
         return examRepository.findAll();
     }
-    public Exam findExamName(String name) {
-        return examRepository.getByCourse(name);
+
+    public List<Exam> findByYoS(int yearOfStudy){
+        return (List<Exam>) examRepository.findByYearOfStudy(yearOfStudy);
     }
 
+    public List<Exam> findByFaculty(String faculty) {
+        return (List<Exam>) examRepository.findByFaculty(faculty);
+    }
 }

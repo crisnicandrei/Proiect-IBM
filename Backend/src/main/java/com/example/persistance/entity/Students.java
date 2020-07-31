@@ -6,51 +6,51 @@ import javax.persistence.Id;
 
 @Entity
 public class Students {
+
     @Id
     @GeneratedValue
     private int id;
-    private int yearOfStudy;
-    private String email;
     private String name;
+    private String course;
+    private String professor;
 
-    public Students(int id, int yearOfStudy, String email, String name) {
+
+    public Students(int id, String name, String course, String professor) {
         this.id = id;
-        this.yearOfStudy = yearOfStudy;
-        this.email = email;
         this.name = name;
+        this.course = course;
+        this.professor = professor;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getYearOfStudy() {
-        return yearOfStudy;
-    }
-
-    public String getEmail() {
-        return email;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setYearOfStudy(int yearOfStudy) {
-        this.yearOfStudy = yearOfStudy;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getCourse() {
+        return course;
+    }
 
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(String professor) {
+        this.professor = professor;
+    }
 }
