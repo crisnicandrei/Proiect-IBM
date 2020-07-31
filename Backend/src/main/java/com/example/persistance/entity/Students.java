@@ -15,12 +15,8 @@ public class Students {
     private String professor;
 
 
-    public Students(int id, String name, String course, String professor) {
-        this.id = id;
-        this.name = name;
-        this.course = course;
-        this.professor = professor;
-    }
+    public Students() {}
+
 
     public int getId() {
         return id;

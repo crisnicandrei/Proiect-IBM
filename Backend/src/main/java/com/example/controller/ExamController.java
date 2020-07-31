@@ -14,8 +14,8 @@ public class ExamController {
     private ExamService examService;
 
     //@GetMapping("/exams")
-    @RequestMapping(value="/exams", method=RequestMethod.GET)
-    public List<Exam> findExams() {
+    @RequestMapping(value = "/exams", method = RequestMethod.GET)
+    public List<Exam> exams() {
         return examService.getExams();
     }
 
@@ -25,18 +25,19 @@ public class ExamController {
     }
 
     //@PostMapping("/addExam")
-    @RequestMapping(value="/addExam", method=RequestMethod.POST)
+    @RequestMapping(value = "/addExam", method = RequestMethod.POST)
     public Exam addExam(@RequestBody Exam exam) {
         return examService.createExam(exam);
     }
 
-    @PostMapping("/upadateExam")
+    @PutMapping("/updateExam")
     public Exam updateExam(@RequestBody Exam exam) {
         return examService.updateExam(exam);
     }
 
+    //@RequestMapping(value = "/deleteExam/{id}", method = RequestMethod.DELETE)
     @DeleteMapping("/deleteExam/{id}")
-    public Exam deleteExam(@PathVariable int id) {
+    public String deleteExam(@PathVariable long id) {
         return examService.deleteExam(id);
     }
 }

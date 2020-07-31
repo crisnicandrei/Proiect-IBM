@@ -20,11 +20,11 @@ public class StudentsController {
 
         return studentsService.getExams();
     }
-    @GetMapping("/students/exams/yearOfStudy")
+    @GetMapping("/students/exams/{yearOfStudy}")
     public List<Exam> findExamsYearOfStudy(@PathVariable int yearOfStudy) {
         return (List<Exam>) studentsService.findByYoS(yearOfStudy);
     }
-    @GetMapping("/students/exams/faculty")
+    @GetMapping("/students/exams/{faculty}")
     public List<Exam> findExamsFaculty(@PathVariable String faculty) {
         return (List<Exam>) studentsService.findByFaculty(faculty);
     }

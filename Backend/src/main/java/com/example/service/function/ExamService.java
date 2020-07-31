@@ -5,6 +5,7 @@ import com.example.persistance.repository.ExamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class ExamService {
     }
 
     public Exam updateExam(Exam exam) {
-        Exam existingExam = examRepository.findById((long) exam.getId()).orElse(exam);
+        Exam existingExam = examRepository.findById(exam.getId()).orElse(exam);
         existingExam.setId(exam.getId());
         existingExam.setDate(exam.getDate());
         existingExam.setSeats(exam.getSeats());
@@ -33,8 +34,8 @@ public class ExamService {
         return examRepository.save(existingExam);
     }
 
-    public Exam deleteExam(int id) {
-        examRepository.deleteById((long) id);
-        return (Exam) examRepository.findAll();
+    public String deleteExam(long id) {
+        examRepository.deleteById(id);
+        return "Removed";
     }
 }

@@ -1,6 +1,6 @@
 package com.example.persistance.entity;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,7 +11,7 @@ public class Exam {
 
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
     private Date date;
     private int seats;
     private int yearOfStudy;
@@ -20,19 +20,10 @@ public class Exam {
     private String course;
     private String faculty;
 
+    public Exam() { }
 
-    public Exam(int id,Date date, int seats, int yearOfStudy, int semester, int academycYear, String course,String faculty) {
-        this.id = id;
-        this.date = date;
-        this.seats = seats;
-        this.yearOfStudy = yearOfStudy;
-        this.semester = semester;
-        this.academycYear = academycYear;
-        this.course = course;
-        this.faculty = faculty;
-    }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -56,7 +47,7 @@ public class Exam {
         return academycYear;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
