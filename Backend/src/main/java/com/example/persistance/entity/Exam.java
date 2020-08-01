@@ -4,7 +4,7 @@ package com.example.persistance.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
+
 
 @Entity
 public class Exam {
@@ -12,7 +12,7 @@ public class Exam {
     @Id
     @GeneratedValue
     private long id;
-    private Date date;
+    private String date;
     private int seats;
     private int yearOfStudy;
     private int semester;
@@ -27,7 +27,7 @@ public class Exam {
         return id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -51,7 +51,7 @@ public class Exam {
         this.id = id;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ExamController {
 
@@ -14,6 +14,7 @@ public class ExamController {
     private ExamService examService;
 
     //@GetMapping("/exams")
+
     @RequestMapping(value = "/exams", method = RequestMethod.GET)
     public List<Exam> exams() {
         return examService.getExams();
