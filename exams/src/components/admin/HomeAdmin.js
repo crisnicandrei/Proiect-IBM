@@ -8,12 +8,13 @@ import ExamLayout from '../layouts/ExamLayout';
 import '../../css/Admin.css';
 
 import AddExam from './AddExam'
+import { CurrentUserContext } from '../LoginContext';
 
 function HomeAdmin() {
 
 
 
-
+    const [currentUser, setCurrentUser] = useContext(CurrentUserContext)
     const [exams, setExams] = useContext(ExamsContext);
     function remove(id) {
         setExams(exams.filter(ex => ex.id !== id))
@@ -39,8 +40,8 @@ function HomeAdmin() {
             </div>
             <div className="row mt-5">
                 {exams.map((exam, index) =>
-                    // <div>
-                    <ExamLayout materie={exam.course} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id)} />
+
+                    exam.status === "acceptat" && <ExamLayout materie={exam.course} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id)} />
 
                 )}
 

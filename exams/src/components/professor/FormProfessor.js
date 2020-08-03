@@ -1,19 +1,16 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 //Import bootstrap components
 import { Form, Container } from 'react-bootstrap'
-import { ExamsContext } from '../ExamsContext';
 
 //Import Icons
 import { MdBook } from 'react-icons/md';
 import { GoPerson, GoCalendar } from 'react-icons/go';
 import { FaChair, FaSchool } from 'react-icons/fa';
 import { AiFillCalendar } from 'react-icons/ai';
-//Import uuid
-import { v4 as uuidv4 } from 'uuid';
+
 
 function FormProfessor() {
-  const [exams, setExams] = useContext(ExamsContext);
   const [yearOfStudy, setYearOfStudy] = useState('');
   const [semester, setSemester] = useState('');
   const [faculty, setFaculty] = useState('');
@@ -21,7 +18,7 @@ function FormProfessor() {
   const [course, setCourse] = useState('');
   const [teacher, setTeacher] = useState('');
   const [date, setDate] = useState('');
-  const [academicYear,setAcademicYear] = useState('')
+  const [academicYear, setAcademicYear] = useState('')
 
 
   function handleSubmit(e) {
@@ -34,34 +31,35 @@ function FormProfessor() {
     //   status: 'asteptare'
     // }])
     const user = {
-      date:date,
-      yearOfStudy:yearOfStudy,
-      semester:semester,
-      academycYear:academicYear ,
-      course:course,
-      faculty:faculty,
-      status:'in asteptare',
-      professor:teacher,
-      seats:nSeats
+      date: date,
+      yearOfStudy: yearOfStudy,
+      semester: semester,
+      academycYear: academicYear,
+      course: course,
+      faculty: faculty,
+      status: 'in asteptare',
+      professor: teacher,
+      seats: nSeats
     };
-    
-      axios.post('http://localhost:9191/addExam', 
-        user)
-      
-        .then(() => {
-          alert("Post realizat cu succes");
-          
-        })
-    
-    
+
+    axios.post('http://localhost:9191/addExam',
+      user)
+
+      .then(() => {
+        alert("Post realizat cu succes");
+
+      })
+
+
     setYearOfStudy('');
     setSemester('');
     setFaculty('');
     setNSeats('');
     setCourse('');
     setTeacher('');
+    setDate('');
+    setAcademicYear('');
   }
-  // console.log(wExams);
   return (
     <div className="container-fluid">
       <div className="row mt-5">

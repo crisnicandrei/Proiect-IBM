@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 //Import CSS
 import '../css/FormLogin.css';
 //Import LoginContext
-import { LoginContext } from './LoginContext';
+import { LoginContext, CurrentUserContext } from './LoginContext';
 import * as ROUTES from './Constants/routes'
 
 
@@ -21,6 +21,7 @@ function FormLogin(props) {
     const [password, setPassword] = useState('')
 
     const [users] = useContext(LoginContext);
+    const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
     const [mouseEnter, setMouseEnter] = useState(false)
 
     const [userFocus, setUserFocus] = useState(false)
@@ -30,17 +31,20 @@ function FormLogin(props) {
         e.preventDefault();
         let verify;
         for (let i = 0; i < users.length; i++) {
-            if (`${username}` === users[i].username && `${password}` === users[i].password) {
+            if (username === users[i].username && password === users[i].password) {
                 if (users[i].usertype === "professor") {
                     verify = true;
+                    setCurrentUser(users[i].username);
                     history.push(ROUTES.PROFHOME);
                     break;
                 } else if (users[i].usertype === "student") {
                     verify = true;
+                    setCurrentUser(users[i].username);
                     history.push(ROUTES.STUDENTHOME);
                     break;
                 } else if (users[i].usertype === "admin") {
                     verify = true;
+                    setCurrentUser(users[i].username);
                     history.push(ROUTES.ADMINHOME);
                     break;
                 }

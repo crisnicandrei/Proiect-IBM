@@ -1,10 +1,11 @@
 import React, { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
 export const LoginContext = createContext();
+export const CurrentUserContext = createContext();
 
 export const LoginProvider = ({ children }) => {
     const [users, setUser] = useState([]);
-
+    const [currentUser, setCurrentUser] = useState('');
 
     const listUser = () => {
         axios.get(`http://localhost:9191/login/users`).then(res => {
@@ -16,8 +17,10 @@ export const LoginProvider = ({ children }) => {
     }, []);
 
     return (
-        <LoginContext.Provider value={[users, setUser]}>
-            {children}
-        </LoginContext.Provider>
+        <CurrentUserContext.Provider value={[currentUser, setCurrentUser]}>
+            <LoginContext.Provider value={[users, setUser]}>
+                {children}
+            </LoginContext.Provider>
+        </CurrentUserContext.Provider>
     );
 }
