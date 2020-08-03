@@ -23,14 +23,17 @@ public class ExamService {
         return examRepository.save(exam);
     }
 
-    public Exam updateExam(Exam exam) {
-        Exam existingExam = examRepository.findById(exam.getId()).orElse(exam);
-        existingExam.setId(exam.getId());
+    public Exam updateExam(Exam exam, long id) {
+        Exam existingExam = examRepository.findById(id).orElse(exam);
         existingExam.setDate(exam.getDate());
         existingExam.setSeats(exam.getSeats());
         existingExam.setYearOfStudy(exam.getYearOfStudy());
         existingExam.setSemester(exam.getSemester());
         existingExam.setAcademycYear(exam.getAcademycYear());
+        existingExam.setStatus(exam.getStatus());
+        existingExam.setCourse(exam.getCourse());
+        existingExam.setFaculty(exam.getFaculty());
+        existingExam.setProfessor(exam.getProfessor());
         return examRepository.save(existingExam);
     }
 

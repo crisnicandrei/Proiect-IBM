@@ -1,6 +1,5 @@
 package com.example.persistance.entity;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,17 +18,19 @@ public class Exam {
     private int academycYear;
     private String course;
     private String faculty;
+    private String status;
+    private String professor;
 
     public Exam() { }
 
+
+    public String getStatus() { return status; }
 
     public long getId() {
         return id;
     }
 
-    public String getDate() {
-        return date;
-    }
+    public String getDate() { return date; }
 
     public int getSeats() {
         return seats;
@@ -71,6 +72,8 @@ public class Exam {
         this.academycYear = academycYear;
     }
 
+    public void setStatus(String status) { this.status = status; }
+
     public String getCourse() {
         return course;
     }
@@ -82,4 +85,8 @@ public class Exam {
     public String getFaculty() { return faculty; }
 
     public void setFaculty(String faculty) { this.faculty = faculty; }
+    public String getProfessor() { return professor; }
+
+    public void setProfessor(String professor) { this.professor = professor; }
+
 }
