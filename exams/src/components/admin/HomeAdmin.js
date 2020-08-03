@@ -40,7 +40,7 @@ function HomeAdmin() {
             <div className="row mt-5">
                 {exams.map((exam, index) =>
                     // <div>
-                    <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id)} />
+                    <ExamLayout materie={exam.course} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id)} />
 
                 )}
 

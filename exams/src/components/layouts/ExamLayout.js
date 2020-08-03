@@ -6,7 +6,7 @@ import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { ExamsContext } from '../ExamsContext';
 import { AiFillFileAdd } from 'react-icons/ai';
-function ExamLayout({ materie, data, profesor, isAdmin, removeExam, updateExam, status, isPend, addExam, deleteExam }) {
+function ExamLayout({ materie, data, profesor, isAdmin,isProfessor,isStudent, removeExam, updateExam, status, isPend, addExam, deleteExam,nrLocuri }) {
     /*
         const [exams] = useState([
             {
@@ -53,7 +53,7 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam, updateExam, 
         removeExam(id)
     }
     const [exams, setExams] = useContext(ExamsContext);
-
+    
     const [isEditing, setEditing] = useState(false);
     function toggleForm() {
         setEditing(!isEditing);
@@ -110,7 +110,9 @@ function ExamLayout({ materie, data, profesor, isAdmin, removeExam, updateExam, 
                     <hr />
                     <h4>Data: {data}</h4>
                     <hr />
-                    <h4>Profesor: {profesor}</h4>
+                    {(isProfessor || isAdmin)&& <h4>Numarul de locuri: {nrLocuri}<hr/></h4>}
+                    {(isStudent ||isAdmin)&& <h4>Profesor {profesor}</h4>}
+
 
                     {isPend && statusW}
                     {isAdmin ? buttons : null}

@@ -16,7 +16,7 @@ function HomeStudent() {
             </div>
             <div className="row mt-5 mb-5">
                 {exams.map((exam, index) =>
-                    <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} />
+                    <ExamLayout materie={exam.materie} profesor={exam.profesor} data={exam.data} key={index} isStudent={true}  />
                 )}
             </div>
 

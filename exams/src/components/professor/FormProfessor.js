@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
-
+import axios from 'axios'
 //Import bootstrap components
 import { Form, Container } from 'react-bootstrap'
-import { wExamsContext } from '../ExamsContext';
+import { ExamsContext } from '../ExamsContext';
 
 //Import Icons
 import { MdBook } from 'react-icons/md';
@@ -13,24 +13,47 @@ import { AiFillCalendar } from 'react-icons/ai';
 import { v4 as uuidv4 } from 'uuid';
 
 function FormProfessor() {
-  const [wExams, setWExams] = useContext(wExamsContext);
+  const [exams, setExams] = useContext(ExamsContext);
   const [yearOfStudy, setYearOfStudy] = useState('');
   const [semester, setSemester] = useState('');
   const [faculty, setFaculty] = useState('');
   const [nSeats, setNSeats] = useState('');
   const [course, setCourse] = useState('');
   const [teacher, setTeacher] = useState('');
+  const [date, setDate] = useState('');
+  const [academicYear,setAcademicYear] = useState('')
 
 
   function handleSubmit(e) {
     e.preventDefault();
-    setWExams(prevExams => [...prevExams, {
-      id: uuidv4(),
-      materie: course,
-      data: yearOfStudy,
-      profesor: teacher,
-      status: 'asteptare'
-    }])
+    // setWExams(prevExams => [...prevExams, {
+    //   id: uuidv4(),
+    //   materie: course,
+    //   data: yearOfStudy,
+    //   profesor: teacher,
+    //   status: 'asteptare'
+    // }])
+    const user = {
+      date:date,
+      yearOfStudy:yearOfStudy,
+      semester:semester,
+      academycYear:academicYear ,
+      course:course,
+      faculty:faculty,
+      status:'in asteptare',
+      professor:teacher,
+      seats:nSeats
+    };
+    
+      axios.post('http://localhost:9191/addExam', 
+        user)
+      
+        .then(() => {
+          alert("Post realizat cu succes");
+          
+        })
+    
+    
     setYearOfStudy('');
     setSemester('');
     setFaculty('');
@@ -38,7 +61,7 @@ function FormProfessor() {
     setCourse('');
     setTeacher('');
   }
-  console.log(wExams);
+  // console.log(wExams);
   return (
     <div className="container-fluid">
       <div className="row mt-5">
@@ -81,6 +104,16 @@ function FormProfessor() {
             <Form.Control type="text" name='teacher' value={teacher} onChange={(e) => setTeacher(e.target.value)} />
           </Form.Group>
 
+          <Form.Group controlId="formBasicAcademicYear">
+            <Form.Label><GoPerson className="form-icons" />An academic</Form.Label>
+            <Form.Control type="text" name='academicYear' value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicDate">
+            <Form.Label><GoPerson className="form-icons" />Date</Form.Label>
+            <Form.Control type="text" name='date' value={date} onChange={(e) => setDate(e.target.value)} />
+          </Form.Group>
+
           <div className='buttonProf'>
             <button className="buttonDesign" type="submit">
               Submit
@@ -91,6 +124,7 @@ function FormProfessor() {
     </div>
   )
 }
+
 
 
 export default FormProfessor;
