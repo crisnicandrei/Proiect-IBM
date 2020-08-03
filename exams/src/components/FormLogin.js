@@ -31,7 +31,7 @@ function FormLogin(props) {
         let verify;
         for (let i = 0; i < users.length; i++) {
             if (`${username}` === users[i].username && `${password}` === users[i].password) {
-                if (users[i].usertype === "prof") {
+                if (users[i].usertype === "professor") {
                     verify = true;
                     history.push(ROUTES.PROFHOME);
                     break;
