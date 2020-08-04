@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 
 //Import Context for Exams
-import { ExamsContext } from '../ExamsContext';
+import { ExamsContext,DataContext } from '../ExamsContext';
 //Import Layout for Exams
 import ExamLayout from '../layouts/ExamLayout';
+
 //Import style for cards
 import '../../css/Admin.css';
 
@@ -14,7 +15,7 @@ import { CurrentUserContext } from '../LoginContext';
 function HomeAdmin() {
 
 
-
+    const [datas,setDatas]=useContext(DataContext);
     const [currentUser, setCurrentUser] = useContext(CurrentUserContext)
     const [exams, setExams] = useContext(ExamsContext);
     function remove(id) {
@@ -28,7 +29,7 @@ function HomeAdmin() {
         // setExams(exams.map((exam) => (exam.id === id ? updatedExam : exam)))
         console.log(id);
     }
-
+    
     console.log(exams);
     return (
         <div className="container-fluid">
@@ -38,7 +39,8 @@ function HomeAdmin() {
             <div className="row mt-5">
                 {exams.map((exam, index) =>
 
-                    exam.status === "acceptat" && <ExamLayout materie={exam.course} status={exam.status} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} academicYear={exam.academycYear} semester={exam.semester} yearOfStudy={exam.yearOfStudy} faculty={exam.faculty} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id)} />
+                    exam.status === "acceptat" && <ExamLayout materie={exam.course} status={exam.status} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} academicYear={exam.academycYear} semester={exam.semester} yearOfStudy={exam.yearOfStudy} faculty={exam.faculty} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => 
+                    axios.put(`http//localhost:9191/updateExam/${exam.id}`,datas).then(alert('Succes!'))} />
 
                 )}
 

@@ -3,11 +3,22 @@ import axios from 'axios';
 
 export const ExamsContext = createContext();
 export const wExamsContext = createContext();
-
+export const DataContext = createContext();
 
 const EXAMS_URL='http://localhost:9191/exams'
 export const ExamsProvider = (props) => {
 
+    const [data,setData]=useState({
+        yearOfStudy:'',
+        semester:'',
+        faculty:'',
+        seats:'',
+        course:'',
+        professor:'',
+        date:'',
+        academycYear:''
+  
+    });
     const [exams, setExams] = useState([]);
     const [wExams, setWExams] = useState([]);
     // const examene = [
@@ -58,10 +69,13 @@ export const ExamsProvider = (props) => {
        
     }, []);
     return (
+        <DataContext.Provider value={[data,setData]}>
         <wExamsContext.Provider value={[wExams, setWExams]}>
             <ExamsContext.Provider value={[exams, setExams]}>
                 {props.children}
             </ExamsContext.Provider>
         </wExamsContext.Provider>
+        </DataContext.Provider>
+        
     );
 }

@@ -5,29 +5,45 @@ import React, { useState, useContext } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { ExamsContext } from '../ExamsContext';
+import { DataContext } from '../ExamsContext';
 import { AiFillFileAdd } from 'react-icons/ai';
 import { Form, Container } from 'react-bootstrap'
 import { AiFillCalendar } from 'react-icons/ai';
 import { MdBook } from 'react-icons/md';
 import { GoPerson, GoCalendar } from 'react-icons/go';
 import { FaChair, FaSchool } from 'react-icons/fa';
+// const[SYear,setSYear]=useState('')
+//  const[Sem,setSem]=useState('')
+//  const[Fac,setFac]=useState('')
+//  const[NS,setNS]=useState('')
+//  const[CURS,setCURS]=useState('')
+//  const[PRF,setPRf]=useState('')
+//  const[dEx,setdEx]=useState('')
+//  const[anAc,setanAc]=useState('');
+
+
 function ExamLayout({ materie, data, profesor, isAdmin, isProfessor, isStudent, removeExam, updateExam, status, isPend, updateStatus, nrLocuri, academicYear, semester, yearOfStudy, faculty }) {
 
 
-  const [yearOStudy, setYearOfStudy] = useState('');
-  const [semesterr, setSemester] = useState('');
-  const [facultty, setFaculty] = useState('');
-  const [nSeats, setNSeats] = useState('');
-  const [course, setCourse] = useState('');
-  const [teacher, setTeacher] = useState('');
-  const [date, setDate] = useState('');
-  const [academycYear, setAcademicYear] = useState('')
 
+
+
+
+
+  
   function removeExams(id) {
     console.log(id);
     removeExam(id)
   }
+  function handle(e)
+  {
+      const newData={...datas};
+      newData[e.target.id]=e.target.value;
+      setDatas(newData);
+
+  }
   const [exams, setExams] = useContext(ExamsContext);
+  const [datas, setDatas] = useContext(DataContext);
 
   const [isEditing, setEditing] = useState(false);
   function toggleForm() {
@@ -57,7 +73,7 @@ function ExamLayout({ materie, data, profesor, isAdmin, isProfessor, isStudent, 
 
   function handleSubmit(e) {
     e.preventDefault();
-    updateExam(exams.id)
+    updateExam();
     setEditing(false);
   }
   let adminFields = (
@@ -80,49 +96,49 @@ function ExamLayout({ materie, data, profesor, isAdmin, isProfessor, isStudent, 
         </div>
         <Container className="mt-5 mb-5">
           <Form className="formDesign" onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicYear">
+            <Form.Group controlId="yearOfStudy">
               <Form.Label><AiFillCalendar className="form-icons" />Year</Form.Label>
-              <Form.Control type="text" name='yearOfStudy' value={yearOfStudy} onChange={(e) => setYearOfStudy(e.target.value)} />
+              <Form.Control type="text" name='yearOfStudy' value={datas.yearOfStudy} onChange={(e) => handle(e)} />
             </Form.Group>
 
-            <Form.Group controlId="formBasicSemester">
+            <Form.Group controlId="semester">
               <Form.Label><GoCalendar className="form-icons" />Semester</Form.Label>
-              <Form.Control type="text" name='semester' value={semester} onChange={(e) => setSemester(e.target.value)} />
+              <Form.Control type="text" name='semester' value={datas.semester} onChange={(e) => handle(e)} />
             </Form.Group>
 
-            <Form.Group controlId="formBasicFaculty">
+            <Form.Group controlId="faculty">
               <Form.Label><FaSchool className="form-icons" />Faculty</Form.Label>
-              <Form.Control type="text" name='faculty' value={faculty} onChange={(e) => setFaculty(e.target.value)} />
+              <Form.Control type="text" name='faculty' value={datas.faculty} onChange={(e) => handle(e)} />
             </Form.Group>
 
 
-            <Form.Group controlId="formBasicSeats">
+            <Form.Group controlId="seats">
               <Form.Label><FaChair className="form-icons" />Number of Seats</Form.Label>
-              <Form.Control type="text" name='nSeats' value={nSeats} onChange={(e) => setNSeats(e.target.value)} />
+              <Form.Control type="text" name='seats' value={datas.seats} onChange={(e) => handle(e)} />
             </Form.Group>
 
 
 
-            <Form.Group controlId="formBasicCourse">
+            <Form.Group controlId="course">
               <Form.Label><MdBook className="form-icons" />Course</Form.Label>
-              <Form.Control type="text" name="course" value={course} onChange={(e) => setCourse(e.target.value)} />
+              <Form.Control type="text" name="course" value={datas.course} onChange={(e) => handle(e)} />
             </Form.Group>
 
 
 
-            <Form.Group controlId="formBasicTeacher">
+            <Form.Group controlId="professor">
               <Form.Label><GoPerson className="form-icons" />Teacher</Form.Label>
-              <Form.Control type="text" name='teacher' value={teacher} onChange={(e) => setTeacher(e.target.value)} />
+              <Form.Control type="text" name='professor' value={datas.professor} onChange={(e) => handle(e)} />
             </Form.Group>
 
-            <Form.Group controlId="formBasicAcademicYear">
+            <Form.Group controlId="academycYear">
               <Form.Label><GoPerson className="form-icons" />An academic</Form.Label>
-              <Form.Control type="text" name='academicYear' value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} />
+              <Form.Control type="text" name='academycYear' value={datas.academycYear} onChange={(e) => handle(e)} />
             </Form.Group>
 
-            <Form.Group controlId="formBasicDate">
+            <Form.Group controlId="date">
               <Form.Label><GoPerson className="form-icons" />Date</Form.Label>
-              <Form.Control type="text" name='date' value={date} onChange={(e) => setDate(e.target.value)} />
+              <Form.Control type="text" name='date' value={datas.date} onChange={(e) => handle(e)} />
             </Form.Group>
 
             <div className='buttonProf'>
