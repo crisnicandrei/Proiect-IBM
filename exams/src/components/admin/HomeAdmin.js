@@ -40,7 +40,7 @@ function HomeAdmin() {
                 {exams.map((exam, index) =>
 
                     exam.status === "acceptat" && <ExamLayout materie={exam.course} status={exam.status} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} academicYear={exam.academycYear} semester={exam.semester} yearOfStudy={exam.yearOfStudy} faculty={exam.faculty} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => 
-                    axios.put(`http//localhost:9191/updateExam/${exam.id}`,datas).then(alert('Succes!'))} />
+                    axios.put(`http://localhost:9191/updateExam/${exam.id}`,datas).then(alert('Succes!'))} />
 
                 )}
 

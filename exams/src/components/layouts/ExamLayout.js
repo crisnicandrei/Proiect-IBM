@@ -71,9 +71,9 @@ function ExamLayout({ materie, data, profesor, isAdmin, isProfessor, isStudent, 
     </div>
   )
 
-  function handleSubmit(e) {
+  function handleSubmit(e,id) {
     e.preventDefault();
-    updateExam();
+    updateExam(id);
     setEditing(false);
   }
   let adminFields = (
