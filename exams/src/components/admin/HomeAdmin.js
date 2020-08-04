@@ -19,17 +19,8 @@ function HomeAdmin() {
     function remove(id) {
         setExams(exams.filter(ex => ex.id !== id))
     }
-    function update(id, updatedField) {
-        const updatedExam = exams.map(exam => {
-            if (exam.id === id) {
-                return {
-                    ...exam, [exams]: updatedField
-                }
-            }
-            return exam;
-        })
-        setExams(updatedExam);
-        console.log(updatedField);
+    function update(id, updatedExam) {
+        setExams(exams.map((exam) => (exam.id === id ? updatedExam : exam)))
     }
 
     console.log(exams);
@@ -41,7 +32,7 @@ function HomeAdmin() {
             <div className="row mt-5">
                 {exams.map((exam, index) =>
 
-                    exam.status === "acceptat" && <ExamLayout materie={exam.course} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id)} />
+                    exam.status === "acceptat" && <ExamLayout materie={exam.course} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id,exam)} />
 
                 )}
 

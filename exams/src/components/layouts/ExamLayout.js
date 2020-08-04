@@ -81,9 +81,9 @@ function ExamLayout({ materie, data, profesor, isAdmin,isProfessor,isStudent, re
     )
 
     function handleUpdate(e) {
-        // e.preventDefault();
-        // updateExam(exams.id,e.target.value)
-        // setEditing(false);
+        e.preventDefault();
+        updateExam(exams.id,e.target.value)
+        setEditing(false);
     }
 
     let result;
@@ -94,6 +94,8 @@ function ExamLayout({ materie, data, profesor, isAdmin,isProfessor,isStudent, re
                     <input type='text' value={materie} name='materie' onChange={handleChange} />
                     <input type='text' value={data} name='data' onChange={handleChange} />
                     <input type='text' value={profesor} name='profesor' onChange={handleChange} />
+                    <input type='text' value={nrLocuri} name='nrLocuri' onChange={handleChange} />
+
 
                     <button>Save</button>
                 </form>
