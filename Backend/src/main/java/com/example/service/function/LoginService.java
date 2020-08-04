@@ -15,11 +15,24 @@ public class LoginService {
     @Autowired
     private LoginRepository loginRepository;
 
-    public List<Login> getUsers() {
+    public List<Login> getUser() {
         return loginRepository.findAll();
     }
 
-    public Login createLogin(Login login) {
+    public Login createUser(Login login) {
         return loginRepository.save(login);
+    }
+
+    public Login updateUser(Login login, long id) {
+        Login existingLogin = loginRepository.findById(id).orElse(login);
+        existingLogin.setUsername(login.getUsername());
+        existingLogin.setPassword(login.getPassword());
+        existingLogin.setUsertype(login.getUsertype());
+        return loginRepository.save(existingLogin);
+    }
+
+    public String deleteUser(long id) {
+        loginRepository.deleteById(id);
+        return "Removed";
     }
 }

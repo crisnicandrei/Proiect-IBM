@@ -37,12 +37,6 @@ public class ExamService {
         return examRepository.save(existingExam);
     }
 
-    public Exam updateExamStatus(Exam exam, long id){
-        Exam existingStatus = examRepository.findById(id).orElse(exam);
-        existingStatus.setStatus(exam.getStatus());
-        return examRepository.save(existingStatus);
-    }
-
     public String deleteExam(long id) {
         examRepository.deleteById(id);
         return "Removed";

@@ -10,19 +10,24 @@ public class Login {
 
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
     private String username;
     private String password;
     private String usertype;
 
-    public Login(){}
+    public Login(){
+//        this.id=id;
+//        this.username=username;
+//        this.password=password;
+//        this.usertype=usertype;
+    }
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

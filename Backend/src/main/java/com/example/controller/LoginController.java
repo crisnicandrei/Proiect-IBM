@@ -12,16 +12,27 @@ import java.util.List;
 public class LoginController {
 
     @Autowired
-    LoginService loginService;
+    private LoginService loginService;
 
     @GetMapping("/login/users")
     public List<Login> findELogin() {
 
-        return loginService.getUsers();
+        return loginService.getUser();
     }
 
     @PostMapping("/login/addUser")
     public Login createLogin(@RequestBody Login login) {
-        return loginService.createLogin(login);
+        return loginService.createUser(login);
+    }
+
+    @PutMapping("/updateUser/{id}")
+    public Login updateUser(@RequestBody Login login, @PathVariable long id) {
+        return loginService.updateUser(login,id);
+    }
+
+    @DeleteMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable long id) {
+
+        return loginService.deleteUser(id);
     }
 }

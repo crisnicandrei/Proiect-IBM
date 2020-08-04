@@ -31,12 +31,8 @@ public class ExamController {
 
     @PutMapping("/updateExam/{id}")
     public Exam updateExam(@RequestBody Exam exam, @PathVariable long id) {
-        return examService.updateExam(exam,id);
-    }
 
-    @PutMapping("/updateStatus/{id}")
-    public Exam updateExamStatus(@RequestBody Exam exam, @PathVariable long id) {
-        return examService.updateExamStatus(exam,id);
+        return examService.updateExam(exam,id);
     }
 
     @DeleteMapping("/deleteExam/{id}")
