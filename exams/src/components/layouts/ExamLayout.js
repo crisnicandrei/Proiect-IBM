@@ -6,47 +6,22 @@ import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { ExamsContext } from '../ExamsContext';
 import { AiFillFileAdd } from 'react-icons/ai';
-function ExamLayout({ materie, data, profesor, isAdmin,isProfessor,isStudent, removeExam, updateExam, status, isPend, addExam, deleteExam,nrLocuri }) {
-    /*
-        const [exams] = useState([
-            {
-                id: 1,
-                materie: 'asdf',
-                data: 'maine',
-                profesor: 'greconici'
-            },
-            {
-                id: 2,
-                materie: 'ts',
-                data: 'ieri',
-                profesor: 'dragomir'
-            },
-            {
-                id: 3,
-                materie: 'ts',
-                data: 'azi',
-                profesor: 'dragomir'
-            }
-        ]
-        );
-        const examCard = exams.map(exam => {
-            return <StudentCard key={exam.id}
-                exam={exam.materie}
-                data={exam.data}
-                profesor={exam.profesor} />
-        })
+import { Form, Container } from 'react-bootstrap'
+import { AiFillCalendar } from 'react-icons/ai';
+import { MdBook } from 'react-icons/md';
+import { GoPerson, GoCalendar } from 'react-icons/go';
+import { FaChair, FaSchool } from 'react-icons/fa';
+function ExamLayout({ materie, data, profesor, isAdmin,isProfessor,isStudent, removeExam, updateExam, status, isPend, addExam, deleteExam,nrLocuri,academicYear,semester,yearOfStudy,faculty }) {
     
-        return (
-            <div>
-                <Container>
-                    <Row md={4}
-                        xs={1}>
-                        {examCard}
-                    </Row>
-                </Container>
-            </div>
-        )
-    */
+    
+    const [yearOStudy, setYearOfStudy] = useState('');
+  const [semesterr, setSemester] = useState('');
+  const [facultty, setFaculty] = useState('');
+  const [nSeats, setNSeats] = useState('');
+  const [course, setCourse] = useState('');
+  const [teacher, setTeacher] = useState('');
+  const [date, setDate] = useState('');
+  const [academycYear, setAcademicYear] = useState('')
 
     function removeExams(id) {
         console.log(id);
@@ -80,26 +55,84 @@ function ExamLayout({ materie, data, profesor, isAdmin,isProfessor,isStudent, re
         </div>
     )
 
-    function handleUpdate(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        updateExam(exams.id,e.target.value)
+        updateExam(exams.id)
         setEditing(false);
     }
-
+    let adminFields = (
+        <div>
+            <h4>Semesrul:{semester}</h4>
+            <hr></hr>
+            <h4>An academic:{academicYear}</h4>
+            <hr></hr>
+            <h4>An de studiu:{yearOfStudy}</h4>
+            <hr></hr>
+            <h4>Facultatea:{faculty}</h4>
+        </div>
+    )
     let result;
     if (isEditing) {
         result = (
-            <div className='StudentCard col-md-3 col-sm-12'>
-                <form onSubmit={handleUpdate}>
-                    <input type='text' value={materie} name='materie' onChange={handleChange} />
-                    <input type='text' value={data} name='data' onChange={handleChange} />
-                    <input type='text' value={profesor} name='profesor' onChange={handleChange} />
-                    <input type='text' value={nrLocuri} name='nrLocuri' onChange={handleChange} />
+            <div className="container-fluid">
+      <div className="row mt-5">
+        <div className="col-12 text-center"><h1 className="title">Cerere programare examen</h1></div>
+      </div>
+      <Container className="mt-5 mb-5">
+        <Form className="formDesign" onSubmit={handleSubmit}>
+          <Form.Group controlId="formBasicYear">
+            <Form.Label><AiFillCalendar className="form-icons" />Year</Form.Label>
+            <Form.Control type="text" name='yearOfStudy' value={yearOfStudy} onChange={(e) => setYearOfStudy(e.target.value)} />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicSemester">
+            <Form.Label><GoCalendar className="form-icons" />Semester</Form.Label>
+            <Form.Control type="text" name='semester' value={semester} onChange={(e) => setSemester(e.target.value)} />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicFaculty">
+            <Form.Label><FaSchool className="form-icons" />Faculty</Form.Label>
+            <Form.Control type="text" name='faculty' value={faculty} onChange={(e) => setFaculty(e.target.value)} />
+          </Form.Group>
 
 
-                    <button>Save</button>
-                </form>
-            </div>
+          <Form.Group controlId="formBasicSeats">
+            <Form.Label><FaChair className="form-icons" />Number of Seats</Form.Label>
+            <Form.Control type="text" name='nSeats' value={nSeats} onChange={(e) => setNSeats(e.target.value)} />
+          </Form.Group>
+
+
+
+          <Form.Group controlId="formBasicCourse">
+            <Form.Label><MdBook className="form-icons" />Course</Form.Label>
+            <Form.Control type="text" name="course" value={course} onChange={(e) => setCourse(e.target.value)} />
+          </Form.Group>
+
+
+
+          <Form.Group controlId="formBasicTeacher">
+            <Form.Label><GoPerson className="form-icons" />Teacher</Form.Label>
+            <Form.Control type="text" name='teacher' value={teacher} onChange={(e) => setTeacher(e.target.value)} />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicAcademicYear">
+            <Form.Label><GoPerson className="form-icons" />An academic</Form.Label>
+            <Form.Control type="text" name='academicYear' value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicDate">
+            <Form.Label><GoPerson className="form-icons" />Date</Form.Label>
+            <Form.Control type="text" name='date' value={date} onChange={(e) => setDate(e.target.value)} />
+          </Form.Group>
+
+          <div className='buttonProf'>
+            <button className="buttonDesign" type="submit">
+              Submit
+            </button>
+          </div>
+        </Form>
+      </Container>
+    </div>
         )
 
 
@@ -113,7 +146,8 @@ function ExamLayout({ materie, data, profesor, isAdmin,isProfessor,isStudent, re
                     <h4>Data: {data}</h4>
                     <hr />
                     {(isProfessor || isAdmin)&& <h4>Numarul de locuri: {nrLocuri}<hr/></h4>}
-                    {(isStudent ||isAdmin)&& <h4>Profesor {profesor}</h4>}
+                    {(isStudent ||isAdmin)&& <div><h4>Profesor {profesor}</h4><hr></hr></div>}
+                    {(isAdmin && adminFields)}
 
 
                     {isPend && statusW}
