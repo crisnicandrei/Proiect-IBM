@@ -5,6 +5,8 @@ import { LoginContext } from '../LoginContext';
 //Import bootstrap components
 import { Form, Container } from 'react-bootstrap'
 
+import axios from 'axios'
+
 //Import Icons
 import { FaUserAlt, FaLock, FaUsers } from 'react-icons/fa';
 
@@ -13,7 +15,7 @@ export default function AddUser() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [usertype, setUsertype] = useState('');
-    const usertypeList = ['admin', 'student', 'prof'];
+    const usertypeList = ['admin', 'student', 'professor'];
     const [admin, student, prof] = usertypeList;
     const updateName = (e) => {
         setUsername(e.target.value);
@@ -30,6 +32,11 @@ export default function AddUser() {
 
     const addUser = e => {
         e.preventDefault();
+        const user = {
+            username: username,
+            password: password,
+            usertype: usertype
+        };
         let verifyUser = users.find(user => user.username === username);
         if (verifyUser === undefined) {
             if (usertype === "") {
@@ -38,10 +45,13 @@ export default function AddUser() {
             else if (username !== "" || password !== "") {
 
                 alert(`Utilizatorul: ${username} a fost adaugat cu succes! Lungimea obiect ${users.length + 1}`)
-                setUsers(prevUser => [...prevUser, { username: username, password: password, usertype: usertype }])
-                setUsername("");
-                setPassword("");
-
+                axios.post('http://localhost:9191/login/addUser', user)
+                    .then(() => {
+                        alert("Post realizat cu succes");
+                        axios.get(`http://localhost:9191/login/users`).then(res => {
+                            setUsers(res.data);
+                        })
+                    })
 
             } else {
                 alert("Trebuie setata o parola si un nume");

@@ -30,7 +30,7 @@ function FormProfessor() {
     //   profesor: teacher,
     //   status: 'asteptare'
     // }])
-    const user = {
+    const exam = {
       date: date,
       yearOfStudy: yearOfStudy,
       semester: semester,
@@ -43,7 +43,7 @@ function FormProfessor() {
     };
 
     axios.post('http://localhost:9191/addExam',
-      user)
+      exam)
 
       .then(() => {
         alert("Post realizat cu succes");

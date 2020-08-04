@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 //Import Context for Exams
 import { ExamsContext } from '../ExamsContext';
@@ -38,7 +38,7 @@ function HomeAdmin() {
             <div className="row mt-5">
                 {exams.map((exam, index) =>
 
-                    exam.status === "acceptat" && <ExamLayout materie={exam.course} status={exam.status} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} academicYear={exam.academycYear} semester={exam.semester} yearOfStudy={exam.yearOfStudy} faculty={exam.faculty}key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id)} />
+                    exam.status === "acceptat" && <ExamLayout materie={exam.course} status={exam.status} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} academicYear={exam.academycYear} semester={exam.semester} yearOfStudy={exam.yearOfStudy} faculty={exam.faculty} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id)} />
 
                 )}
 
