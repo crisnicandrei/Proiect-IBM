@@ -8,6 +8,7 @@ import ExamLayout from '../layouts/ExamLayout';
 import '../../css/Admin.css';
 
 import AddExam from './AddExam'
+import axios from 'axios'
 import { CurrentUserContext } from '../LoginContext';
 
 function HomeAdmin() {
@@ -17,7 +18,11 @@ function HomeAdmin() {
     const [currentUser, setCurrentUser] = useContext(CurrentUserContext)
     const [exams, setExams] = useContext(ExamsContext);
     function remove(id) {
-        setExams(exams.filter(ex => ex.id !== id))
+        axios.delete('http://localhost:9191/deleteExam/' + id)
+            .then(res => {
+                setExams(exams.filter(ex => ex.id !== id))
+            }
+            )
     }
     function update(id, updatedExam) {
         setExams(exams.map((exam) => (exam.id === id ? updatedExam : exam)))
@@ -32,7 +37,7 @@ function HomeAdmin() {
             <div className="row mt-5">
                 {exams.map((exam, index) =>
 
-                    exam.status === "acceptat" && <ExamLayout materie={exam.course} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id,exam)} />
+                    exam.status === "acceptat" && <ExamLayout materie={exam.course} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} key={index} isAdmin={true} removeExam={() => remove(exam.id)} updateExam={() => update(exam.id, exam)} />
 
                 )}
 
