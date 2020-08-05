@@ -18,6 +18,11 @@ public class StudentsService {
     @Autowired
     private StudentsRepository studentsRepository;
 
+    public List<Students> getStudents() {
+
+        return studentsRepository.findAll();
+    }
+
     public Students createStudents(Students students) {
         return studentsRepository.save(students);
     }

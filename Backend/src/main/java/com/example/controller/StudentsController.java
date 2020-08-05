@@ -21,13 +21,13 @@ public class StudentsController {
 
         return studentsService.createStudents(students);
     }
-/*
 
-    @GetMapping("/students/exams")
-    public List<Exam> findExams() {
 
-        return studentsService.getExams();
+    @RequestMapping(value = "/students", method = RequestMethod.GET)
+    public List<Students> students() {
+        return studentsService.getStudents();
     }
+    /*
     @GetMapping("/students/exams/{yearOfStudy}")
     public List<Exam> findExamsYearOfStudy(@PathVariable int yearOfStudy) {
         return (List<Exam>) studentsService.findByYoS(yearOfStudy);
