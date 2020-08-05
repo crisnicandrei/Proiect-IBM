@@ -34,6 +34,7 @@ public class ExamController {
 
         return examService.updateExam(exam,id);
     }
+
     @PutMapping("/updateStatus/{id}")
     public Exam updateStatus(@RequestBody Exam exam, @PathVariable long id) {
         return examService.updateStatus(exam,id);
@@ -43,4 +44,6 @@ public class ExamController {
     public String deleteExam(@PathVariable long id) {
         return examService.deleteExam(id);
     }
+
+
 }

@@ -1,6 +1,5 @@
 package com.example.service.function;
 
-import com.example.persistance.entity.Exam;
 import com.example.persistance.entity.Login;
 import com.example.persistance.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;

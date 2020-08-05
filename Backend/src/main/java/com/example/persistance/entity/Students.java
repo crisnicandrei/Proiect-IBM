@@ -11,8 +11,8 @@ public class Students {
     @GeneratedValue
     private int id;
     private String name;
-    private String course;
-    private String professor;
+    private String faculty;
+    private int yearOfStudy;
 
 
     public Students() {}
@@ -34,19 +34,11 @@ public class Students {
         this.name = name;
     }
 
-    public String getCourse() {
-        return course;
-    }
+    public String getFaculty() { return faculty; }
 
-    public void setCourse(String course) {
-        this.course = course;
-    }
+    public void setFaculty(String faculty) { this.faculty = faculty; }
 
-    public String getProfessor() {
-        return professor;
-    }
+    public int getYearOfStudy() { return yearOfStudy; }
 
-    public void setProfessor(String professor) {
-        this.professor = professor;
-    }
+    public void setYearOfStudy(int yearOfStudy) { this.yearOfStudy = yearOfStudy; }
 }

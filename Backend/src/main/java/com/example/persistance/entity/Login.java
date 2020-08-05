@@ -15,12 +15,7 @@ public class Login {
     private String password;
     private String usertype;
 
-    public Login(){
-//        this.id=id;
-//        this.username=username;
-//        this.password=password;
-//        this.usertype=usertype;
-    }
+    public Login(){ }
 
 
     public long getId() {

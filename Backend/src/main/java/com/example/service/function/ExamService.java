@@ -36,6 +36,7 @@ public class ExamService {
         existingExam.setProfessor(exam.getProfessor());
         return examRepository.save(existingExam);
     }
+
     public Exam updateStatus(Exam exam, long id){
         Exam existingStatus = examRepository.findById(id).orElse(exam);
         existingStatus.setStatus(exam.getStatus());
