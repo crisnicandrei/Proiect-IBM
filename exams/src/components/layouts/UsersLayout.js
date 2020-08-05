@@ -9,7 +9,7 @@ import { AiFillCalendar } from 'react-icons/ai';
 import { GoCalendar } from 'react-icons/go';
 import { FaSchool } from 'react-icons/fa';
 
-import {axios} from 'axios';
+import axios from 'axios';
 export default function UsersLayout({ username, password, usertype, removeUsers,userId }) {
 
     const [users,setUser] = useContext(LoginContext)
