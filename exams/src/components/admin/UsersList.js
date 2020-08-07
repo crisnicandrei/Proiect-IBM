@@ -24,7 +24,7 @@ export default function UsersList() {
             </div>
             <div className="row">
                 {users.map((user, index) =>
-                    <UsersLayout username={user.username} password={user.password} usertype={user.usertype} removeUsers={() => removeUser(user.id)} key={index} />
+                    <UsersLayout username={user.username} password={user.password} usertype={user.usertype} removeUsers={() => removeUser(user.id)} key={index} userId = {user.id} />
                 )}
             </div>
             <div className="row">

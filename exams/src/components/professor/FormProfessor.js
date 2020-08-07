@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
 //Import bootstrap components
 import { Form, Container } from 'react-bootstrap'
@@ -8,15 +8,18 @@ import { MdBook } from 'react-icons/md';
 import { GoPerson, GoCalendar } from 'react-icons/go';
 import { FaChair, FaSchool } from 'react-icons/fa';
 import { AiFillCalendar } from 'react-icons/ai';
+import { CurrentUserContext } from '../LoginContext';
 
 
 function FormProfessor() {
+
+  const [currentUser] = useContext(CurrentUserContext);
   const [yearOfStudy, setYearOfStudy] = useState('');
   const [semester, setSemester] = useState('');
   const [faculty, setFaculty] = useState('');
   const [nSeats, setNSeats] = useState('');
   const [course, setCourse] = useState('');
-  const [teacher, setTeacher] = useState('');
+  const [teacher, setTeacher] = useState(currentUser);
   const [date, setDate] = useState('');
   const [academicYear, setAcademicYear] = useState('')
 
@@ -99,7 +102,7 @@ function FormProfessor() {
 
           <Form.Group controlId="formBasicTeacher">
             <Form.Label><GoPerson className="form-icons" />Teacher</Form.Label>
-            <Form.Control type="text" name='teacher' value={teacher} onChange={(e) => setTeacher(e.target.value)} />
+            <Form.Control type="text" name='teacher' value={teacher} readOnly />
           </Form.Group>
 
           <Form.Group controlId="formBasicAcademicYear">

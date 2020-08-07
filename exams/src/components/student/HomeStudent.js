@@ -6,12 +6,14 @@ import { ExamsContext } from '../ExamsContext';
 //Import Layout for Exams
 import ExamLayout from '../layouts/ExamLayout';
 
-import { CurrentUserContext } from '../LoginContext';
+import { CurrentUserContext, StudentContext } from '../LoginContext';
 
 
 function HomeStudent() {
     const [currentUser, setCurrentUser] = useContext(CurrentUserContext)
+    const [student, setStudent] = useContext(StudentContext);
     const [exams] = useContext(ExamsContext);
+
 
     return (
         <div className="container-fluid">
@@ -19,9 +21,9 @@ function HomeStudent() {
                 <div className="col-12 text-center"><h1 className="title">Lista examenelor</h1></div>
             </div>
             <div className="row mt-5 mb-5">
-                {exams.map((exam, index) =>
-                    <ExamLayout materie={exam.course} profesor={exam.professor} data={exam.date} key={index} isStudent={true} />
-                )}
+                {exams.map((exam, index) => student.map((stud) =>
+                    (currentUser === stud.name && stud.faculty === exam.faculty && stud.yearOfStudy === exam.yearOfStudy) && <ExamLayout materie={exam.course} profesor={exam.professor} data={exam.date} key={index} isStudent={true} />
+                ))}
             </div>
 
         </div>

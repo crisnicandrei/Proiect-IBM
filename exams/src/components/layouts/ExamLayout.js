@@ -33,6 +33,15 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
 
   const statusW = (
     <div>
+      <h5>Numarul de locuri: {nrLocuri}</h5><hr />
+      <h5>Profesor: {profesor}</h5><hr />
+      <h5>Semestrul: {semester}</h5>
+      <hr></hr>
+      <h5>An academic: {academicYear}</h5>
+      <hr></hr>
+      <h5>An de studiu: {yearOfStudy}</h5>
+      <hr></hr>
+      <h5>Facultatea: {faculty}</h5>
       <hr />
       <h5>Status: {status}</h5>
       <AiFillFileAdd className="icons-admin-card" onClick={updateStatus}></AiFillFileAdd>
@@ -85,7 +94,7 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
 
   let adminFields = (
     <div>
-      <h5>Semesrul: {semester}</h5>
+      <h5>Semestrul: {semester}</h5>
       <hr></hr>
       <h5>An academic: {academicYear}</h5>
       <hr></hr>

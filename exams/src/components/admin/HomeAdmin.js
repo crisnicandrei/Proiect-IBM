@@ -42,9 +42,7 @@ function HomeAdmin() {
                 )}
 
             </div>
-            <div className="row mt-5">
-                <div className="col-12 text-center"><h1 className="title">Adauga un examen</h1></div>
-            </div>
+            
             <div className='row mt-5'>
                 <AddExam />
             </div>
