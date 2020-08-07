@@ -13,24 +13,24 @@ import java.util.List;
 @Service
 public class StudentsService {
 
-    //@Autowired
-    //private ExamRepository examRepository;
+    @Autowired
+    private ExamRepository examRepository;
     @Autowired
     private StudentsRepository studentsRepository;
 
     public Students createStudents(Students students) {
         return studentsRepository.save(students);
     }
-/*
+
     public List<Exam> getExams() {
         return examRepository.findAll();
     }
 
     public List<Exam> findByYoS(int yearOfStudy){
-        return (List<Exam>) examRepository.findByYearOfStudy(yearOfStudy);
+        return  examRepository.findByYearOfStudy(yearOfStudy);
     }
 
     public List<Exam> findByFaculty(String faculty) {
-        return (List<Exam>) examRepository.findByFaculty(faculty);
-    }*/
+        return  examRepository.findByFaculty(faculty);
+    }
 }
