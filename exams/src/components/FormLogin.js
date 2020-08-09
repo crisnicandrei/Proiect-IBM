@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 //Import CSS
 import '../css/FormLogin.css';
 //Import LoginContext
-import { LoginContext, CurrentUserContext } from './LoginContext';
+import { LoginContext, CurrentUserContext ,isLoggedContext} from './LoginContext';
 import * as ROUTES from './Constants/routes'
 
 
@@ -20,9 +20,12 @@ function FormLogin(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+    
+    const [isLogged,setisLogged] = useContext(isLoggedContext)
     const [users] = useContext(LoginContext);
     const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
     const [mouseEnter, setMouseEnter] = useState(false)
+    
 
     const [userFocus, setUserFocus] = useState(false)
     const [passwordFocus, setPasswordFocus] = useState(false)
@@ -48,6 +51,7 @@ function FormLogin(props) {
                     history.push(ROUTES.ADMINHOME);
                     break;
                 }
+                
             } else {
                 verify = false;
             }
@@ -56,6 +60,7 @@ function FormLogin(props) {
             alert("Este gresit");
         } else {
             console.log("Connectat cu succes");
+            setisLogged(true);
         }
 
 

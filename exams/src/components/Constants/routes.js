@@ -5,3 +5,4 @@ export const ADMINHOME = "/admin/home"
 export const ADMINUSERSLIST = "/admin/userslist"
 export const ADMINPENDING = "/admin/pend"
 export const LOGIN = '/'
+export const ERROR='*'

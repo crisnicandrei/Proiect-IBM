@@ -12,6 +12,7 @@ import PageAdmin from './components/admin/pageAdmin';
 import { ExamsProvider } from './components/ExamsContext';
 import { LoginProvider } from './components/LoginContext';
 
+import PrivateRoute from './components/Navigation/PrivateRoute';
 import * as ROUTES from './components/Constants/routes'
 
 
@@ -23,12 +24,13 @@ function App() {
         <div className="App">
           <Switch >
             <Route path={ROUTES.LOGIN} exact component={FormLogin} />
-            <Route path={ROUTES.PROFHOME} exact component={PageProfesor} />
-            <Route path={ROUTES.PROFCERERE} exact component={PageProfesor} />
-            <Route path={ROUTES.STUDENTHOME}exact component={PageStudent} />
-            <Route path={ROUTES.ADMINHOME} exact component={PageAdmin} />
-            <Route path={ROUTES.ADMINUSERSLIST} exact component={PageAdmin} />
-            <Route path={ROUTES.ADMINPENDING} exact component={PageAdmin} />
+            <PrivateRoute path={ROUTES.PROFHOME} exact component={PageProfesor} />
+            <PrivateRoute path={ROUTES.PROFCERERE} exact component={PageProfesor} />
+            <PrivateRoute path={ROUTES.STUDENTHOME}exact component={PageStudent} />
+            <PrivateRoute path={ROUTES.ADMINHOME} exact component={PageAdmin} />
+            <PrivateRoute path={ROUTES.ADMINUSERSLIST} exact component={PageAdmin} />
+            <PrivateRoute path={ROUTES.ADMINPENDING} exact component={PageAdmin} />
+            <Route path={ROUTES.ERROR} exact component = {() => '404 PAGE NOT FOUND!'} />
           </Switch>
 
         </div>
