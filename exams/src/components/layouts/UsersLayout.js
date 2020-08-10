@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState,useContext} from 'react'
+import { useState, useContext } from 'react'
 //Import Icons
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
@@ -10,42 +10,40 @@ import { GoCalendar } from 'react-icons/go';
 import { FaSchool } from 'react-icons/fa';
 
 import axios from 'axios';
-export default function UsersLayout({ username, password, usertype, removeUsers,userId }) {
+export default function UsersLayout({ username, password, usertype, removeUsers, userId }) {
 
-    const [users,setUser] = useContext(LoginContext)
-    const [isEditing, setEditing] = useState(false);
-    const [Username,setUsername] = useState(username);
-    const [Password,setPassword] = useState(password);
-    const [Usertype,setUsertype] = useState(usertype)
+  const [users, setUser] = useContext(LoginContext)
+  const [isEditing, setEditing] = useState(false);
+  const [Username, setUsername] = useState(username);
+  const [Password, setPassword] = useState(password);
+  const [Usertype, setUsertype] = useState(usertype)
 
-    function handleEdit()
-    {
-        setEditing(!isEditing)
+  function handleEdit() {
+    setEditing(!isEditing)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const userUpdate = {
+      username: Username,
+      password: Password,
+      usertype: Usertype
     }
-
-    function handleSubmit(e)
-    {
-        e.preventDefault();
-        const userUpdate = {
-            username:Username,
-            password:Password,
-            usertype:Usertype
-        } 
-        axios.put(`http://localhost:9191/updateUser/${userId}`, userUpdate)
-      .then(
+    axios.put(`http://localhost:9191/updateUser/${userId}`, userUpdate)
+      .then(() => {
+        alert("S-a editat cu succes");
         axios.get('http://localhost:9191/login/users').then(res => {
           setUser(res.data);
           console.log(res.data);
         })
-      )
-        setEditing(false);  
-    }
+      })
+    setEditing(false);
+  }
 
-    let display;
-    if(isEditing)
-    {
-        display = (
-            <div className="col-md-4 col-sm-12">
+  let display;
+  if (isEditing) {
+    display = (
+      <div className="col-md-4 col-sm-12">
         <div className="StudentCard">
           <Form onSubmit={handleSubmit}>
 
@@ -66,7 +64,7 @@ export default function UsersLayout({ username, password, usertype, removeUsers,
             </Form.Group>
 
 
-            
+
 
             <div className='buttonProf'>
               <button className="buttonDesign" type="submit">
@@ -77,29 +75,28 @@ export default function UsersLayout({ username, password, usertype, removeUsers,
           </Form>
         </div>
       </div>
-        )
-    }
-    else
-    {
-        display = (<div className='col-lg-4 mx-auto col-12 mb-3'>
-        <div className="Userlist-card ">
-            <h4>Username: {username} </h4>
-            <hr />
-            <h4>Password: {password}</h4>
-            <hr />
-            <h4>Usertype: {usertype}</h4>
-            <p>
-                <FaEdit className="icons-admin-card" onClick={handleEdit}></FaEdit>
-                <MdDelete className="icons-admin-card" onClick={removeUsers} ></MdDelete>
-            </p>
-        </div>
+    )
+  }
+  else {
+    display = (<div className='col-lg-4 mx-auto col-12 mb-3'>
+      <div className="Userlist-card ">
+        <h4>Username: {username} </h4>
+        <hr />
+        <h4>Password: {password}</h4>
+        <hr />
+        <h4>Usertype: {usertype}</h4>
+        <p>
+          <FaEdit className="icons-admin-card" onClick={handleEdit}></FaEdit>
+          <MdDelete className="icons-admin-card" onClick={removeUsers} ></MdDelete>
+        </p>
+      </div>
     </div>)
-    }
+  }
 
-    
-    return (
 
-        display
+  return (
 
-    );
+    display
+
+  );
 }

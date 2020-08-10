@@ -16,6 +16,7 @@ import { AiFillCalendar } from 'react-icons/ai';
 
 
 export default function AddExam() {
+  const [exams, setExams] = useContext(ExamsContext);
   const [yearOfStudy, setYearOfStudy] = useState('');
   const [semester, setSemester] = useState('');
   const [faculty, setFaculty] = useState('');
@@ -60,11 +61,13 @@ export default function AddExam() {
       seats: nSeats
     };
 
-    axios.post('http://localhost:9191/addExam',
-      exam)
-
+    axios
+      .post('http://localhost:9191/addExam', exam)
       .then(() => {
-        alert("Post realizat cu succes");
+        alert("Post reailizat cu succes");
+        axios.get(`http://localhost:9191/exams`).then(res => {
+          setExams(res.data);
+        })
 
       })
     setYearOfStudy('');
@@ -76,6 +79,7 @@ export default function AddExam() {
     setDate('');
     setAcademicYear('');
   }
+
 
   return (
 

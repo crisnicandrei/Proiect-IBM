@@ -76,12 +76,13 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
       seats: NrSeats
     };
     axios.put(`http://localhost:9191/updateExam/${idExam}`, examUpdate)
-      .then(
+      .then(() => {
+        alert("S-a editat cu succes");
         axios.get('http://localhost:9191/exams').then(res => {
           setExams(res.data);
           console.log(res.data);
         })
-      )
+      })
 
     setEditing(false);
   }
