@@ -18,8 +18,18 @@ public class StudentsService {
     @Autowired
     private StudentsRepository studentsRepository;
 
+    public List<Students> getStudents() {
+
+        return studentsRepository.findAll();
+    }
+
     public Students createStudents(Students students) {
         return studentsRepository.save(students);
+    }
+
+    public String deleteStudent(long id) {
+        studentsRepository.deleteById(id);
+        return "Removed";
     }
 
     public List<Exam> getExams() {

@@ -15,10 +15,19 @@ public class StudentsController {
     @Autowired
     StudentsService studentsService;
 
+    @RequestMapping(value = "/students", method = RequestMethod.GET)
+    public List<Students> exams() {
+        return studentsService.getStudents();
+    }
     @PostMapping("/addStudent")
     public Students createStudent(@RequestBody Students students) {
 
         return studentsService.createStudents(students);
+    }
+
+    @DeleteMapping("/deleteStudent/{id}")
+    public String deleteStudent(@PathVariable long id) {
+        return studentsService.deleteStudent(id);
     }
 
     @GetMapping("/students/exams")

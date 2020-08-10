@@ -9,7 +9,7 @@ public class Students {
 
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
     private String name;
     private String faculty;
     private int yearOfStudy;
@@ -18,7 +18,7 @@ public class Students {
     public Students() {}
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

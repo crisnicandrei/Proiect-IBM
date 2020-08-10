@@ -62,6 +62,9 @@ export default function AddUser() {
             setPassword("");
         }
 
+        setUsername("");
+        setPassword("");
+
 
     }
     console.log(users);

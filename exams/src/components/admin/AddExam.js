@@ -16,7 +16,7 @@ import { AiFillCalendar } from 'react-icons/ai';
 
 
 export default function AddExam() {
-    const [yearOfStudy, setYearOfStudy] = useState('');
+  const [yearOfStudy, setYearOfStudy] = useState('');
   const [semester, setSemester] = useState('');
   const [faculty, setFaculty] = useState('');
   const [nSeats, setNSeats] = useState('');
@@ -25,60 +25,61 @@ export default function AddExam() {
   const [date, setDate] = useState('');
   const [academicYear, setAcademicYear] = useState('')
 
-    // const updateMaterie = (e) => {
-    //     setMaterie(e.target.value);
-    // }
+  // const updateMaterie = (e) => {
+  //     setMaterie(e.target.value);
+  // }
 
-    // const updateData = (e) => {
-    //     setData(e.target.value);
-    // }
+  // const updateData = (e) => {
+  //     setData(e.target.value);
+  // }
 
-    // const updateProfesor = (e) => {
-    //     setProfesor(e.target.value)
-    
-    const handleSubmit = (e) => {
-      
-        // setExams(prevExams => [...prevExams, {
-        //     id: uuidv4(),
-        //     materie: materie,
-        //     data: data,
-        //     profesor: profesor,
-        //     status: 'acceptat'
+  // const updateProfesor = (e) => {
+  //     setProfesor(e.target.value)
+
+  const handleSubmit = (e) => {
+
+    // setExams(prevExams => [...prevExams, {
+    //     id: uuidv4(),
+    //     materie: materie,
+    //     data: data,
+    //     profesor: profesor,
+    //     status: 'acceptat'
 
 
-        // }])
-        const exam = {
-            date: date,
-            yearOfStudy: yearOfStudy,
-            semester: semester,
-            academycYear: academicYear,
-            course: course,
-            faculty: faculty,
-            status: 'acceptat',
-            professor: teacher,
-            seats: nSeats
-          };
+    // }])
+    e.preventDefault();
+    const exam = {
+      date: date,
+      yearOfStudy: yearOfStudy,
+      semester: semester,
+      academycYear: academicYear,
+      course: course,
+      faculty: faculty,
+      status: 'acceptat',
+      professor: teacher,
+      seats: nSeats
+    };
 
-          axios.post('http://localhost:9191/addExam',
+    axios.post('http://localhost:9191/addExam',
       exam)
 
       .then(() => {
         alert("Post realizat cu succes");
 
       })
-          setYearOfStudy('');
-          setSemester('');
-          setFaculty('');
-          setNSeats('');
-          setCourse('');
-          setTeacher('');
-          setDate('');
-          setAcademicYear('');
-    }
-    
-    return (
+    setYearOfStudy('');
+    setSemester('');
+    setFaculty('');
+    setNSeats('');
+    setCourse('');
+    setTeacher('');
+    setDate('');
+    setAcademicYear('');
+  }
 
-        <div className="container-fluid">
+  return (
+
+    <div className="container-fluid">
       <div className="row mt-5">
         <div className="col-12 text-center"><h1 className="title">Adaugare examen</h1></div>
       </div>
@@ -137,7 +138,7 @@ export default function AddExam() {
         </Form>
       </Container>
     </div>
-    )
+  )
 
 
 }
