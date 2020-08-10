@@ -12,6 +12,9 @@ import { AiFillCalendar } from 'react-icons/ai';
 import { MdBook } from 'react-icons/md';
 import { GoPerson, GoCalendar } from 'react-icons/go';
 import { FaChair, FaSchool } from 'react-icons/fa';
+
+import Alert from 'react-bootstrap/Alert';
+
 export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, isProfessor, isStudent, removeExam, updateExam, status, isPend, updateStatus, nrLocuri, academicYear, semester, yearOfStudy, faculty }) {
 
   const [exams, setExams] = useContext(ExamsContext);
@@ -23,6 +26,7 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
   const [Teacher, setTeacher] = useState(profesor);
   const [Date, setDate] = useState(data);
   const [AcademycYear, setAcademicYear] = useState(academicYear);
+  const [show, setShow] = useState(false);
   const buttons =
     (
       <div>
@@ -77,7 +81,7 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
     };
     axios.put(`http://localhost:9191/updateExam/${idExam}`, examUpdate)
       .then(() => {
-        alert("S-a editat cu succes");
+        setShow(true);
         axios.get('http://localhost:9191/exams').then(res => {
           setExams(res.data);
           console.log(res.data);
@@ -171,6 +175,9 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
   else {
     result = (
       <div className='col-md-4 col-sm-12'>
+        {show === true && <Alert variant="info" onClose={() => setShow(false)} dismissible>
+          <p>Examenul a fost editat cu succes</p>
+        </Alert>}
         <div className="StudentCard">
           <h5>Materia: {materie} </h5>
           <hr />

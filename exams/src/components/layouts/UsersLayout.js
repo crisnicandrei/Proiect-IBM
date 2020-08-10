@@ -9,6 +9,7 @@ import { AiFillCalendar } from 'react-icons/ai';
 import { GoCalendar } from 'react-icons/go';
 import { FaSchool } from 'react-icons/fa';
 
+import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 export default function UsersLayout({ username, password, usertype, removeUsers, userId }) {
 
@@ -17,6 +18,7 @@ export default function UsersLayout({ username, password, usertype, removeUsers,
   const [Username, setUsername] = useState(username);
   const [Password, setPassword] = useState(password);
   const [Usertype, setUsertype] = useState(usertype)
+  const [show, setShow] = useState(false);
 
   function handleEdit() {
     setEditing(!isEditing)
@@ -31,7 +33,7 @@ export default function UsersLayout({ username, password, usertype, removeUsers,
     }
     axios.put(`http://localhost:9191/updateUser/${userId}`, userUpdate)
       .then(() => {
-        alert("S-a editat cu succes");
+        setShow(true);
         axios.get('http://localhost:9191/login/users').then(res => {
           setUser(res.data);
           console.log(res.data);
@@ -44,7 +46,9 @@ export default function UsersLayout({ username, password, usertype, removeUsers,
   if (isEditing) {
     display = (
       <div className="col-md-4 col-sm-12">
+
         <div className="StudentCard">
+
           <Form onSubmit={handleSubmit}>
 
 
@@ -79,7 +83,11 @@ export default function UsersLayout({ username, password, usertype, removeUsers,
   }
   else {
     display = (<div className='col-lg-4 mx-auto col-12 mb-3'>
+      {show === true && <Alert variant="info" onClose={() => setShow(false)} dismissible>
+        <p>Utilizatorul a fost editat cu succes</p>
+      </Alert>}
       <div className="Userlist-card ">
+
         <h4>Username: {username} </h4>
         <hr />
         <h4>Password: {password}</h4>

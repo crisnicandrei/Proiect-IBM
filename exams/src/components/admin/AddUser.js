@@ -4,7 +4,7 @@ import { LoginContext } from '../LoginContext';
 
 //Import bootstrap components
 import { Form, Container } from 'react-bootstrap'
-
+import Alert from 'react-bootstrap/Alert'
 import axios from 'axios'
 
 //Import Icons
@@ -17,6 +17,8 @@ export default function AddUser() {
     const [usertype, setUsertype] = useState('');
     const usertypeList = ['admin', 'student', 'professor'];
     const [admin, student, prof] = usertypeList;
+    const [show, setShow] = useState(false);
+
     const updateName = (e) => {
         setUsername(e.target.value);
     }
@@ -44,10 +46,9 @@ export default function AddUser() {
             }
             else if (username !== "" || password !== "") {
 
-                alert(`Utilizatorul: ${username} a fost adaugat cu succes! Lungimea obiect ${users.length + 1}`)
                 axios.post('http://localhost:9191/login/addUser', user)
                     .then(() => {
-                        alert("Post realizat cu succes");
+                        setShow(true);
                         axios.get(`http://localhost:9191/login/users`).then(res => {
                             setUsers(res.data);
                         })
@@ -69,7 +70,17 @@ export default function AddUser() {
     }
     console.log(users);
     return (
+
+
         <Container>
+            <div className="row">
+                <div className="col-12 text-center">
+                    {show === true && <Alert variant="info" onClose={() => setShow(false)} dismissible>
+                        <p>Utilizatorul a fost adaugat cu succes</p>
+                    </Alert>
+                    }
+                </div>
+            </div>
             <Form className="formDesign" onSubmit={addUser}>
                 <Form.Group controlId="formUsername">
                     <Form.Label><FaUserAlt className="form-icons" />Username</Form.Label>
@@ -96,5 +107,6 @@ export default function AddUser() {
 
             </Form>
         </Container>
+
     )
 }

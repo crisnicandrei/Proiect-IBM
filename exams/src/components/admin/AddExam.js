@@ -6,6 +6,8 @@ import { ExamsContext } from '../ExamsContext'
 import { Form, Container } from 'react-bootstrap'
 import axios from 'axios';
 
+import Alert from 'react-bootstrap/Alert';
+
 //Import Icons
 import { MdBook } from 'react-icons/md';
 import { GoPerson, GoCalendar } from 'react-icons/go';
@@ -25,6 +27,7 @@ export default function AddExam() {
   const [teacher, setTeacher] = useState('');
   const [date, setDate] = useState('');
   const [academicYear, setAcademicYear] = useState('')
+  const [show, setShow] = useState(false);
 
   // const updateMaterie = (e) => {
   //     setMaterie(e.target.value);
@@ -64,7 +67,7 @@ export default function AddExam() {
     axios
       .post('http://localhost:9191/addExam', exam)
       .then(() => {
-        alert("Post reailizat cu succes");
+        setShow(true);
         axios.get(`http://localhost:9191/exams`).then(res => {
           setExams(res.data);
         })
@@ -80,7 +83,6 @@ export default function AddExam() {
     setAcademicYear('');
   }
 
-
   return (
 
     <div className="container-fluid">
@@ -88,6 +90,12 @@ export default function AddExam() {
         <div className="col-12 text-center"><h1 className="title">Adaugare examen</h1></div>
       </div>
       <Container className="mt-5 mb-5">
+        <div className="col-12 text-center">
+          {show === true && <Alert variant="info" onClose={() => setShow(false)} dismissible>
+            <p>Examenul a fost adaugat cu succes</p>
+          </Alert>
+          }
+        </div>
         <Form className="formDesign" onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicYear">
             <Form.Label><AiFillCalendar className="form-icons" />Year</Form.Label>

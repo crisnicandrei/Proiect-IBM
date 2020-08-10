@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
 //Import bootstrap components
-import { Form, Container } from 'react-bootstrap'
+import { Form, Container } from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
 
 //Import Icons
 import { MdBook } from 'react-icons/md';
@@ -22,7 +23,7 @@ function FormProfessor() {
   const [teacher, setTeacher] = useState(currentUser);
   const [date, setDate] = useState('');
   const [academicYear, setAcademicYear] = useState('')
-
+  const [show, setShow] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -49,7 +50,7 @@ function FormProfessor() {
       exam)
 
       .then(() => {
-        alert("Post realizat cu succes");
+        setShow(true);
 
       })
 
@@ -69,6 +70,9 @@ function FormProfessor() {
         <div className="col-12 text-center"><h1 className="title">Cerere programare examen</h1></div>
       </div>
       <Container className="mt-5 mb-5">
+        {show === true && <Alert variant="info" onClose={() => setShow(false)} dismissible>
+          <p>Cerera a fost trimisa cu succes</p>
+        </Alert>}
         <Form className="formDesign" onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicYear">
             <Form.Label><AiFillCalendar className="form-icons" />Year</Form.Label>
