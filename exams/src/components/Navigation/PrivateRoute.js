@@ -1,30 +1,30 @@
-import React ,{useContext}from 'react'
+import React, { useContext } from 'react'
 import { isLoggedContext } from '../LoginContext';
-import { Route,Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component,...rest}) =>{
+const PrivateRoute = ({ component: Component, ...rest }) => {
 
-    const [isLogged,setisLogged] = useContext(isLoggedContext);
+    const [isLogged] = useContext(isLoggedContext);
     return (
         <Route
-        {...rest}
-        render = {props =>{
-            if(isLogged)
-            {
-                return <Component { ...props } />;
-            }
-            else
-            {
-                return (
-                    <Redirect 
-                    to =  {{ pathname : '/' , 
-                             state: {
-                                 from: props.location
-                             }}}
-                             />
-                )
-            }
-        }}
+            {...rest}
+            render={props => {
+                if (isLogged) {
+                    return <Component {...props} />;
+                }
+                else {
+                    return (
+                        <Redirect
+                            to={{
+                                pathname: '/',
+                                state: {
+                                    from: props.location
+                                }
+                            }}
+                        />
+                    )
+                }
+            }}
         />
     )
 }

@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 //Import CSS
 import '../css/FormLogin.css';
 //Import LoginContext
-import { LoginContext, CurrentUserContext ,isLoggedContext} from './LoginContext';
+import { LoginContext, CurrentUserContext, isLoggedContext } from './LoginContext';
 import * as ROUTES from './Constants/routes'
 
 
@@ -20,46 +20,53 @@ function FormLogin(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    
-    const [isLogged,setisLogged] = useContext(isLoggedContext)
+
+    const [, setisLogged] = useContext(isLoggedContext)
     const [users] = useContext(LoginContext);
-    const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
+    const [, setCurrentUser] = useContext(CurrentUserContext);
     const [mouseEnter, setMouseEnter] = useState(false)
-    
+
 
     const [userFocus, setUserFocus] = useState(false)
     const [passwordFocus, setPasswordFocus] = useState(false)
 
+    const [errorInc, setErrorInc] = useState(false);
+    const [errorEmpty, setErrorEmpty] = useState(false);
+
     function handleSubmit(e) {
         e.preventDefault();
         let verify;
-        for (let i = 0; i < users.length; i++) {
-            if (username === users[i].username && password === users[i].password) {
-                if (users[i].usertype === "professor") {
-                    verify = true;
-                    setCurrentUser(users[i].username);
-                    history.push(ROUTES.PROFHOME);
-                    break;
-                } else if (users[i].usertype === "student") {
-                    verify = true;
-                    setCurrentUser(users[i].username);
-                    history.push(ROUTES.STUDENTHOME);
-                    break;
-                } else if (users[i].usertype === "admin") {
-                    verify = true;
-                    setCurrentUser(users[i].username);
-                    history.push(ROUTES.ADMINHOME);
-                    break;
+        if (username === '' || password === '') {
+            setErrorEmpty(true);
+            verify = false;
+        } else {
+            setErrorEmpty(false);
+            for (let i = 0; i < users.length; i++) {
+                if (username === users[i].username && password === users[i].password) {
+                    if (users[i].usertype === "professor") {
+                        verify = true;
+                        setCurrentUser(users[i].username);
+                        history.push(ROUTES.PROFHOME);
+                        break;
+                    } else if (users[i].usertype === "student") {
+                        verify = true;
+                        setCurrentUser(users[i].username);
+                        history.push(ROUTES.STUDENTHOME);
+                        break;
+                    } else if (users[i].usertype === "admin") {
+                        verify = true;
+                        setCurrentUser(users[i].username);
+                        history.push(ROUTES.ADMINHOME);
+                        break;
+                    }
+
+                } else {
+                    verify = false;
+                    setErrorInc(true);
                 }
-                
-            } else {
-                verify = false;
             }
         }
-        if (verify === false) {
-            alert("Este gresit");
-        } else {
-            console.log("Connectat cu succes");
+        if (verify === true) {
             setisLogged(true);
         }
 
@@ -114,6 +121,8 @@ function FormLogin(props) {
                     </div>
 
                     <input type='submit' className='btn' value='Login' />
+                    {errorInc && <p style={{ color: 'red', fontWeight: 'bold' }}>Username sau parola incorecte!</p>}
+                    {errorEmpty && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Nu trebuie lasate campuri libere!</p>}
                 </form>
             </div>
         </div>

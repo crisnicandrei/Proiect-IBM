@@ -9,15 +9,11 @@ import '../../css/Admin.css';
 
 import AddExam from './AddExam'
 import axios from 'axios'
-import { CurrentUserContext } from '../LoginContext';
 import Searchbar from './SearchbarFaculty';
 import SearchbarYear from './SearchbarYear';
 
 function HomeAdmin() {
 
-
-
-    const [currentUser, setCurrentUser] = useContext(CurrentUserContext)
     const [exams, setExams] = useContext(ExamsContext);
 
 

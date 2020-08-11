@@ -25,6 +25,20 @@ function FormProfessor() {
   const [academicYear, setAcademicYear] = useState('')
   const [show, setShow] = useState(false);
 
+  const [errorNumber, setErrorNumber] = useState(false);
+  const [errorEmpty, setErrorEmpty] = useState(false);
+  const [errorString, setErrorString] = useState(false);
+
+  function validareNumar(number) {
+    let numbersOnly = /^[0-9\b]+$/;
+    return numbersOnly.test(number);
+  }
+  function validareString(strings) {
+    let stringsOnly = /^[A-Za-z]+$/;
+    return stringsOnly.test(strings);
+  }
+
+
   function handleSubmit(e) {
     e.preventDefault();
     // setWExams(prevExams => [...prevExams, {
@@ -46,23 +60,37 @@ function FormProfessor() {
       seats: nSeats
     };
 
-    axios.post('http://localhost:9191/addExam',
-      exam)
+    if (date === '' || yearOfStudy === '' || semester === '' || academicYear === '' || faculty === '' || teacher === '' || course === '' || nSeats === '') {
+      setErrorEmpty(true);
+    } else {
+      setErrorEmpty(false);
+      if (validareString(faculty) === false || validareString(teacher) === false) {
+        setErrorString(true);
+      } else {
+        setErrorString(false);
+        if (validareNumar(yearOfStudy) === false || validareNumar(semester) === false || validareNumar(academicYear) === false || validareNumar(nSeats) === false) {
+          setErrorNumber(true);
 
-      .then(() => {
-        setShow(true);
+        } else {
+          setErrorNumber(false);
+          axios
+            .post('http://localhost:9191/addExam', exam)
+            .then(() => {
+              setShow(true);
 
-      })
+            })
+          setYearOfStudy('');
+          setSemester('');
+          setFaculty('');
+          setNSeats('');
+          setCourse('');
+          setTeacher('');
+          setDate('');
+          setAcademicYear('');
+        }
+      }
+    }
 
-
-    setYearOfStudy('');
-    setSemester('');
-    setFaculty('');
-    setNSeats('');
-    setCourse('');
-    setTeacher('');
-    setDate('');
-    setAcademicYear('');
   }
   return (
     <div className="container-fluid">
@@ -111,7 +139,11 @@ function FormProfessor() {
 
           <Form.Group controlId="formBasicAcademicYear">
             <Form.Label><GoPerson className="form-icons" />An academic</Form.Label>
-            <Form.Control type="text" name='academicYear' value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} />
+            <Form.Control
+              type="text"
+              name='academicYear'
+              value={academicYear}
+              onChange={(e) => setAcademicYear(e.target.value)} />
           </Form.Group>
 
           <Form.Group controlId="formBasicDate">
@@ -124,6 +156,9 @@ function FormProfessor() {
               Submit
             </button>
           </div>
+          {errorNumber && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Anul de studiu, semestrul, numarul de locuri si anul academic nu au voie sa contina litere!</p>}
+          {errorEmpty && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Nu trebuie lasate campuri libere!</p>}
+          {errorString && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Profesorul si facultatea nu au voie sa contina cifre!</p>}
         </Form>
       </Container>
     </div>

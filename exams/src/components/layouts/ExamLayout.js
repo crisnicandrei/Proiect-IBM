@@ -17,7 +17,7 @@ import Alert from 'react-bootstrap/Alert';
 
 export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, isProfessor, isStudent, removeExam, updateExam, status, isPend, updateStatus, nrLocuri, academicYear, semester, yearOfStudy, faculty }) {
 
-  const [exams, setExams] = useContext(ExamsContext);
+  const [, setExams] = useContext(ExamsContext);
   const [YearOfStudy, setYearOfStudy] = useState(yearOfStudy);
   const [Semester, setSemester] = useState(semester);
   const [Faculty, setFaculty] = useState(faculty);
@@ -27,6 +27,10 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
   const [Date, setDate] = useState(data);
   const [AcademycYear, setAcademicYear] = useState(academicYear);
   const [show, setShow] = useState(false);
+
+  const [errorNumber, setErrorNumber] = useState(false);
+  const [errorEmpty, setErrorEmpty] = useState(false);
+  const [errorString, setErrorString] = useState(false);
   const buttons =
     (
       <div>
@@ -54,14 +58,25 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
   )
   const [isEditing, setEditing] = useState(false);
 
-  function removeExams(id) {
-    removeExam(id)
-  }
+
 
 
 
   function toggleForm() {
     setEditing(!isEditing);
+  }
+  function validareNumar(number) {
+    let numbersOnly = /^[0-9\b]+$/;
+    return numbersOnly.test(number);
+  }
+  function validareString(strings) {
+    let stringsOnly = /^[A-Za-z]+$/;
+    return stringsOnly.test(strings);
+  }
+
+  function cancelForm(e) {
+    e.preventDefault();
+    setEditing(false)
   }
 
 
@@ -79,16 +94,32 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
       professor: Teacher,
       seats: NrSeats
     };
-    axios.put(`http://localhost:9191/updateExam/${idExam}`, examUpdate)
-      .then(() => {
-        setShow(true);
-        axios.get('http://localhost:9191/exams').then(res => {
-          setExams(res.data);
-          console.log(res.data);
-        })
-      })
+    if (Date === '' || YearOfStudy === '' || Semester === '' || AcademycYear === '' || Faculty === '' || Course === '' || Teacher === '' || NrSeats === '') {
+      setErrorEmpty(true);
+    } else {
+      setErrorEmpty(false);
+      if (validareString(Faculty) === false || validareString(Teacher) === false) {
+        setErrorString(true);
+      } else {
+        setErrorString(false);
+        if (validareNumar(YearOfStudy) === false || validareNumar(Semester) === false || validareNumar(AcademycYear) === false || validareNumar(NrSeats) === false) {
+          setErrorNumber(true);
 
-    setEditing(false);
+        } else {
+          setErrorNumber(false);
+          axios.put(`http://localhost:9191/updateExam/${idExam}`, examUpdate)
+            .then(() => {
+              setShow(true);
+              axios.get('http://localhost:9191/exams').then(res => {
+                setExams(res.data);
+                console.log(res.data);
+              })
+            })
+
+          setEditing(false);
+        }
+      }
+    }
   }
 
 
@@ -163,8 +194,11 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
               <button className="buttonDesign" type="submit">
                 Submit
             </button>&nbsp;
-            <button className="buttonDesign" onClick={() => setEditing(false)}>Cancel</button>
+            <button className="buttonDesign" onClick={cancelForm}>Cancel</button>
             </div>
+            {errorNumber && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Anul de studiu, semestrul, numarul de locuri si anul academic nu au voie sa contina litere!</p>}
+            {errorEmpty && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Nu trebuie lasate campuri libere!</p>}
+            {errorString && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Profesorul si facultatea nu au voie sa contina cifre!</p>}
           </Form>
         </div>
       </div>

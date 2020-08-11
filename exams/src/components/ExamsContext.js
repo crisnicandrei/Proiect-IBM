@@ -5,19 +5,19 @@ export const ExamsContext = createContext();
 export const wExamsContext = createContext();
 export const DataContext = createContext();
 
-const EXAMS_URL='http://localhost:9191/exams'
+const EXAMS_URL = 'http://localhost:9191/exams'
 export const ExamsProvider = (props) => {
 
-    const [data,setData]=useState({
-        yearOfStudy:'',
-        semester:'',
-        faculty:'',
-        seats:'',
-        course:'',
-        professor:'',
-        date:'',
-        academycYear:''
-  
+    const [data, setData] = useState({
+        yearOfStudy: '',
+        semester: '',
+        faculty: '',
+        seats: '',
+        course: '',
+        professor: '',
+        date: '',
+        academycYear: ''
+
     });
     const [exams, setExams] = useState([]);
     const [wExams, setWExams] = useState([]);
@@ -56,26 +56,25 @@ export const ExamsProvider = (props) => {
     const listExams = () => {
         axios.get(EXAMS_URL).then(res => {
             setExams(res.data);
-            console.log(res.data);
         });
-        
+
     };
     // const listExamsWait = () => {
     //     setWExams(exameneWait);
     // }
     useEffect(() => {
-        listExams(); 
-        
-       
+        listExams();
+
+
     }, []);
     return (
-        <DataContext.Provider value={[data,setData]}>
-        <wExamsContext.Provider value={[wExams, setWExams]}>
-            <ExamsContext.Provider value={[exams, setExams]}>
-                {props.children}
-            </ExamsContext.Provider>
-        </wExamsContext.Provider>
+        <DataContext.Provider value={[data, setData]}>
+            <wExamsContext.Provider value={[wExams, setWExams]}>
+                <ExamsContext.Provider value={[exams, setExams]}>
+                    {props.children}
+                </ExamsContext.Provider>
+            </wExamsContext.Provider>
         </DataContext.Provider>
-        
+
     );
 }

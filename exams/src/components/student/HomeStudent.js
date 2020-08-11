@@ -10,8 +10,8 @@ import { CurrentUserContext, StudentContext } from '../LoginContext';
 
 
 function HomeStudent() {
-    const [currentUser, setCurrentUser] = useContext(CurrentUserContext)
-    const [student, setStudent] = useContext(StudentContext);
+    const [currentUser] = useContext(CurrentUserContext)
+    const [student] = useContext(StudentContext);
     const [exams] = useContext(ExamsContext);
 
 

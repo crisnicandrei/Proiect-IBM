@@ -18,7 +18,7 @@ import { AiFillCalendar } from 'react-icons/ai';
 
 
 export default function AddExam() {
-  const [exams, setExams] = useContext(ExamsContext);
+  const [, setExams] = useContext(ExamsContext);
   const [yearOfStudy, setYearOfStudy] = useState('');
   const [semester, setSemester] = useState('');
   const [faculty, setFaculty] = useState('');
@@ -28,6 +28,10 @@ export default function AddExam() {
   const [date, setDate] = useState('');
   const [academicYear, setAcademicYear] = useState('')
   const [show, setShow] = useState(false);
+
+  const [errorNumber, setErrorNumber] = useState(false);
+  const [errorEmpty, setErrorEmpty] = useState(false);
+  const [errorString, setErrorString] = useState(false);
 
   // const updateMaterie = (e) => {
   //     setMaterie(e.target.value);
@@ -39,6 +43,15 @@ export default function AddExam() {
 
   // const updateProfesor = (e) => {
   //     setProfesor(e.target.value)
+
+  function validareNumar(number) {
+    let numbersOnly = /^[0-9\b]+$/;
+    return numbersOnly.test(number);
+  }
+  function validareString(strings) {
+    let stringsOnly = /^[A-Za-z]+$/;
+    return stringsOnly.test(strings);
+  }
 
   const handleSubmit = (e) => {
 
@@ -63,24 +76,43 @@ export default function AddExam() {
       professor: teacher,
       seats: nSeats
     };
+    if (date === '' || yearOfStudy === '' || semester === '' || academicYear === '' || faculty === '' || teacher === '' || course === '' || nSeats === '') {
+      setErrorEmpty(true);
+    } else {
+      setErrorEmpty(false);
+      if (validareString(faculty) === false || validareString(teacher) === false) {
+        setErrorString(true);
+      } else {
+        setErrorString(false);
+        if (validareNumar(yearOfStudy) === false || validareNumar(semester) === false || validareNumar(academicYear) === false || validareNumar(nSeats) === false) {
+          setErrorNumber(true);
 
-    axios
-      .post('http://localhost:9191/addExam', exam)
-      .then(() => {
-        setShow(true);
-        axios.get(`http://localhost:9191/exams`).then(res => {
-          setExams(res.data);
-        })
+        } else {
+          setErrorNumber(false);
+          axios
+            .post('http://localhost:9191/addExam', exam)
+            .then(() => {
+              setShow(true);
+              axios.get(`http://localhost:9191/exams`).then(res => {
+                setExams(res.data);
+              })
 
-      })
-    setYearOfStudy('');
-    setSemester('');
-    setFaculty('');
-    setNSeats('');
-    setCourse('');
-    setTeacher('');
-    setDate('');
-    setAcademicYear('');
+            })
+          setYearOfStudy('');
+          setSemester('');
+          setFaculty('');
+          setNSeats('');
+          setCourse('');
+          setTeacher('');
+          setDate('');
+          setAcademicYear('');
+        }
+      }
+    }
+
+
+
+
   }
 
   return (
@@ -147,6 +179,9 @@ export default function AddExam() {
               Submit
             </button>
           </div>
+          {errorNumber && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Anul de studiu, semestrul, numarul de locuri si anul academic nu au voie sa contina litere!</p>}
+          {errorEmpty && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Nu trebuie lasate campuri libere!</p>}
+          {errorString && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Profesorul si facultatea nu au voie sa contina cifre!</p>}
         </Form>
       </Container>
     </div>

@@ -31,7 +31,7 @@ function PenddingExams() {
             <div className="row mt-5">
                 <div className="col-12 text-center"><h1 className="title">Examene in Asteptare</h1></div>
             </div>
-            <div class="container">
+            <div className="container">
                 <div className="row">
                     <div className="col-12 text-center">
                         {show === true && <Alert variant="info" onClose={() => setShow(false)} dismissible>

@@ -19,6 +19,9 @@ export default function AddUser() {
     const [admin, student, prof] = usertypeList;
     const [show, setShow] = useState(false);
 
+    const [errorExist, setErrorExist] = useState(false);
+    const [errorEmpty, setErrorEmpty] = useState(false);
+    const [errorOption, setErrorOption] = useState(false);
     const updateName = (e) => {
         setUsername(e.target.value);
     }
@@ -41,34 +44,43 @@ export default function AddUser() {
         };
         let verifyUser = users.find(user => user.username === username);
         if (verifyUser === undefined) {
-            if (usertype === "") {
-                alert("Trebuie selectata o optiune");
-            }
-            else if (username !== "" || password !== "") {
+            setErrorExist(false);
+            if (username !== "" && password !== "") {
+                if (usertype === "") {
+                    setErrorOption(true);
+                }
+                else {
+                    setErrorOption(false);
 
-                axios.post('http://localhost:9191/login/addUser', user)
-                    .then(() => {
-                        setShow(true);
-                        axios.get(`http://localhost:9191/login/users`).then(res => {
-                            setUsers(res.data);
+                    axios.post('http://localhost:9191/login/addUser', user)
+                        .then(() => {
+                            setShow(true);
+                            axios.get(`http://localhost:9191/login/users`).then(res => {
+                                setUsers(res.data);
+                            })
                         })
-                    })
-
+                    setErrorOption(false);
+                    setErrorEmpty(false);
+                    setErrorExist(false);
+                    setUsername("");
+                    setPassword("");
+                }
             } else {
-                alert("Trebuie setata o parola si un nume");
+                setErrorEmpty(true);
             }
+
+
+
         } else {
-            alert("Utilizatorul exista deja");
+            setErrorExist(true);
             setUsername("");
             setPassword("");
         }
 
-        setUsername("");
-        setPassword("");
+
 
 
     }
-    console.log(users);
     return (
 
 
@@ -104,7 +116,9 @@ export default function AddUser() {
                         Submit
                     </button>
                 </div>
-
+                {errorExist && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Numele de utilizator exista deja!</p>}
+                {errorEmpty && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Nu trebuie lasate campuri libere!</p>}
+                {errorOption && <p style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>Selectati o optiune!</p>}
             </Form>
         </Container>
 

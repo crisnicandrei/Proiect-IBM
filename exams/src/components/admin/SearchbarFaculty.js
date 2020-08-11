@@ -4,7 +4,7 @@ import { ExamsContext } from '../ExamsContext';
 
 export default function Searchbar() {
 
-    const [exams, setExams] = useContext(ExamsContext);
+    const [, setExams] = useContext(ExamsContext);
     const [facultyI, setFacultyI] = useState('');
 
 
