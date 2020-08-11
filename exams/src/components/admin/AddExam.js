@@ -16,6 +16,13 @@ import { FaChair, FaSchool } from 'react-icons/fa';
 import { AiFillCalendar } from 'react-icons/ai';
 
 
+import { getter,adder } from '../Constants/APIHandler'
+
+
+const ADD_API = 'http://localhost:9191/addExam'
+const EXAM_API = `http://localhost:9191/exams`
+
+
 
 export default function AddExam() {
   const [, setExams] = useContext(ExamsContext);
@@ -89,11 +96,10 @@ export default function AddExam() {
 
         } else {
           setErrorNumber(false);
-          axios
-            .post('http://localhost:9191/addExam', exam)
+          adder(ADD_API,exam)
             .then(() => {
               setShow(true);
-              axios.get(`http://localhost:9191/exams`).then(res => {
+              getter(EXAM_API).then(res => {
                 setExams(res.data);
               })
 

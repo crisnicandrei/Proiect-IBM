@@ -1,6 +1,8 @@
 import React, { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
 
+import { getter } from '../components/Constants/APIHandler'
+
 export const ExamsContext = createContext();
 export const wExamsContext = createContext();
 export const DataContext = createContext();
@@ -54,7 +56,7 @@ export const ExamsProvider = (props) => {
     //     }
     // ]
     const listExams = () => {
-        axios.get(EXAMS_URL).then(res => {
+        getter(EXAMS_URL).then(res => {
             setExams(res.data);
         });
 

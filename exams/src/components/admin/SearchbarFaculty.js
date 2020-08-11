@@ -1,6 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { ExamsContext } from '../ExamsContext';
+import { ExamsContext } from '../ExamsContext';  
+
+import { getter } from '../Constants/APIHandler'
+
+
+
 
 export default function Searchbar() {
 
@@ -8,17 +13,19 @@ export default function Searchbar() {
     const [facultyI, setFacultyI] = useState('');
 
 
+    const EXAMS_API = 'http://localhost:9191/exams'
+    const EXAMS_API_FAC = `http://localhost:9191/students/${facultyI}`
+
+
     useEffect(
         () => {
             if (facultyI === '') {
-                axios
-                    .get('http://localhost:9191/exams')
+                getter(EXAMS_API)
                     .then(res => {
                         setExams(res.data);
                     })
             } else {
-                axios
-                    .get(`http://localhost:9191/students/${facultyI}`)
+                getter(EXAMS_API_FAC)
                     .then(res => {
                         setExams(res.data);
                     })

@@ -11,6 +11,10 @@ import { FaChair, FaSchool } from 'react-icons/fa';
 import { AiFillCalendar } from 'react-icons/ai';
 import { CurrentUserContext } from '../LoginContext';
 
+import { adder } from '../Constants/APIHandler'
+
+const ADD_EXAM_API = 'http://localhost:9191/addExam'
+
 
 function FormProfessor() {
 
@@ -73,8 +77,7 @@ function FormProfessor() {
 
         } else {
           setErrorNumber(false);
-          axios
-            .post('http://localhost:9191/addExam', exam)
+          adder(ADD_EXAM_API,exam)
             .then(() => {
               setShow(true);
 

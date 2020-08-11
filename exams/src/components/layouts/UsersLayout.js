@@ -9,8 +9,12 @@ import { AiFillCalendar } from 'react-icons/ai';
 import { GoCalendar } from 'react-icons/go';
 import { FaSchool } from 'react-icons/fa';
 
+import { putter,getter } from '../Constants/APIHandler'
+
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
+
+
 export default function UsersLayout({ username, password, usertype, removeUsers, userId }) {
 
   const [, setUser] = useContext(LoginContext)
@@ -23,6 +27,9 @@ export default function UsersLayout({ username, password, usertype, removeUsers,
 
   const [errorEmpty, setErrorEmpty] = useState(false);
   const [errorOption, setErrorOption] = useState(false);
+
+  const UPDATE_API = `http://localhost:9191/updateUser/${userId}`
+  const LOGIN_API = 'http://localhost:9191/login/users'
   function handleEdit() {
     setEditing(!isEditing)
   }
@@ -44,10 +51,10 @@ export default function UsersLayout({ username, password, usertype, removeUsers,
       }
       else {
         setErrorOption(false);
-        axios.put(`http://localhost:9191/updateUser/${userId}`, userUpdate)
+        putter(UPDATE_API,userUpdate)
           .then(() => {
             setShow(true);
-            axios.get('http://localhost:9191/login/users').then(res => {
+            getter(LOGIN_API).then(res => {
               setUser(res.data);
             })
           })

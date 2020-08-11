@@ -9,13 +9,18 @@ import ExamLayout from '../layouts/ExamLayout';
 
 import Alert from 'react-bootstrap/Alert';
 
+import { deleter,putter } from '../Constants/APIHandler'
+
+const DELETE_EXAM_API = 'http://localhost:9191/deleteExam/'
+const UPDATE_EXAM_API_STATUS = 'http://localhost:9191/updateStatus/'
+
 
 function PenddingExams() {
     const [exams, setExams] = useContext(ExamsContext);
     const [show, setShow] = useState(false);
     const [showR, setShowR] = useState(false);
     function remove(id) {
-        axios.delete('http://localhost:9191/deleteExam/' + id)
+        deleter(DELETE_EXAM_API + id)
             .then(res => {
                 setExams(exams.filter(ex => ex.id !== id))
                 setShowR(true);
@@ -49,7 +54,7 @@ function PenddingExams() {
                     exam.status === "in asteptare" && <ExamLayout materie={exam.course} status={exam.status} nrLocuri={exam.seats} profesor={exam.professor} data={exam.date} academicYear={exam.academycYear} semester={exam.semester} yearOfStudy={exam.yearOfStudy} faculty={exam.faculty} key={exam.id} isPend={true} removeExam={() => remove(exam.id)}
                         updateStatus={() => {
                             const data = { status: 'acceptat' }
-                            axios.put(`http://localhost:9191/updateStatus/${exam.id}`, data)
+                            putter(UPDATE_EXAM_API_STATUS+exam.id,data)
                                 .then(
                                     setShow(true)
 

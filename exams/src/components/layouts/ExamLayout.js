@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 //Import Student Card component
 //import StudentCard from './StudentCard';
-import axios from 'axios';
+
 //Import Icons
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
@@ -12,6 +12,8 @@ import { AiFillCalendar } from 'react-icons/ai';
 import { MdBook } from 'react-icons/md';
 import { GoPerson, GoCalendar } from 'react-icons/go';
 import { FaChair, FaSchool } from 'react-icons/fa';
+
+import { putter,getter } from '../Constants/APIHandler'
 
 import Alert from 'react-bootstrap/Alert';
 
@@ -31,6 +33,11 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
   const [errorNumber, setErrorNumber] = useState(false);
   const [errorEmpty, setErrorEmpty] = useState(false);
   const [errorString, setErrorString] = useState(false);
+
+  const UPDATE_API = `http://localhost:9191/updateExam/${idExam}`
+
+  const EXAMS_API = 'http://localhost:9191/exams'
+
   const buttons =
     (
       <div>
@@ -107,10 +114,10 @@ export default function ExamLayout({ idExam, materie, data, profesor, isAdmin, i
 
         } else {
           setErrorNumber(false);
-          axios.put(`http://localhost:9191/updateExam/${idExam}`, examUpdate)
+          putter(UPDATE_API,examUpdate)
             .then(() => {
               setShow(true);
-              axios.get('http://localhost:9191/exams').then(res => {
+              getter(EXAMS_API).then(res => {
                 setExams(res.data);
                 console.log(res.data);
               })

@@ -5,10 +5,17 @@ import { LoginContext } from '../LoginContext';
 //Import bootstrap components
 import { Form, Container } from 'react-bootstrap'
 import Alert from 'react-bootstrap/Alert'
-import axios from 'axios'
+
+
+import {adder,getter} from '../Constants/APIHandler'
+
+
 
 //Import Icons
 import { FaUserAlt, FaLock, FaUsers } from 'react-icons/fa';
+
+const ADD_USER_API = 'http://localhost:9191/login/addUser'
+const USER_API = `http://localhost:9191/login/users`
 
 export default function AddUser() {
     const [users, setUsers] = useContext(LoginContext);
@@ -52,10 +59,10 @@ export default function AddUser() {
                 else {
                     setErrorOption(false);
 
-                    axios.post('http://localhost:9191/login/addUser', user)
+                    adder(ADD_USER_API,user)
                         .then(() => {
                             setShow(true);
-                            axios.get(`http://localhost:9191/login/users`).then(res => {
+                            getter(USER_API).then(res => {
                                 setUsers(res.data);
                             })
                         })

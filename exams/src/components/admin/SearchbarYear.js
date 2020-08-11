@@ -2,23 +2,27 @@ import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { ExamsContext } from '../ExamsContext';
 
+import { getter } from '../Constants/APIHandler'
+
 export default function SearchbarYear() {
 
     const [, setExams] = useContext(ExamsContext);
     const [yearOfStudy, setyearOfStudy] = useState('');
 
 
+    const EXAMS_API = 'http://localhost:9191/exams'
+    const EXAMS_API_YEAR = `http://localhost:9191/students/exams/${yearOfStudy}`
+
+
     useEffect(
         () => {
             if (yearOfStudy === '') {
-                axios
-                    .get('http://localhost:9191/exams')
+                getter(EXAMS_API)
                     .then(res => {
                         setExams(res.data);
                     })
             } else {
-                axios
-                    .get(`http://localhost:9191/students/exams/${yearOfStudy}`)
+                getter(EXAMS_API_YEAR)
                     .then(res => {
                         setExams(res.data);
                     })

@@ -20,6 +20,8 @@ body{
     justify-content: center;
 	align-items: flex-end;  
 	padding-right: 10%;
+	box-shadow: 0 19px 38px rgba(0,0,0,0.3), 0 15px 12px rgba(0,0,0,0.1);
+
 }
 
 
@@ -164,6 +166,8 @@ input.btn{
 	margin: 1rem 0;
 	cursor: pointer;
 	transition: .5s;
+	box-shadow: 0 19px 38px rgba(0,0,0,0.3), 0 15px 12px rgba(0,0,0,0.1);
+
 }
 input.btn:hover{
 	background-position: right;

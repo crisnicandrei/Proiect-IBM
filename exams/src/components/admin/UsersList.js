@@ -4,11 +4,15 @@ import UsersLayout from '../layouts/UsersLayout';
 import AddUser from './AddUser';
 import axios from 'axios';
 
+import { deleter } from '../Constants/APIHandler'
+
+const DELETE_USER_API = 'http://localhost:9191/deleteUser/'
+
 export default function UsersList() {
     const [users, setUsers] = useContext(LoginContext);
 
     function removeUser(id) {
-        axios.delete('http://localhost:9191/deleteUser/' + id)
+        deleter(DELETE_USER_API + id)
             .then(res => {
                 setUsers(users.filter(user => user.id !== id))
             }
