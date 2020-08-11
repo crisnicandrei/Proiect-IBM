@@ -26,11 +26,12 @@ function App() {
             <Route path={ROUTES.LOGIN} exact component={FormLogin} />
             <PrivateRoute path={ROUTES.PROFHOME} exact component={PageProfesor} />
             <PrivateRoute path={ROUTES.PROFCERERE} exact component={PageProfesor} />
-            <PrivateRoute path={ROUTES.STUDENTHOME}exact component={PageStudent} />
+            <PrivateRoute path={ROUTES.STUDENTHOME} exact component={PageStudent} />
             <PrivateRoute path={ROUTES.ADMINHOME} exact component={PageAdmin} />
             <PrivateRoute path={ROUTES.ADMINUSERSLIST} exact component={PageAdmin} />
+            <PrivateRoute path={ROUTES.ADMINSTUDENTSLIST} exact component={PageAdmin} />
             <PrivateRoute path={ROUTES.ADMINPENDING} exact component={PageAdmin} />
-            <Route path={ROUTES.ERROR} exact component = {() => '404 PAGE NOT FOUND!'} />
+            <Route path={ROUTES.ERROR} exact component={() => '404 PAGE NOT FOUND!'} />
           </Switch>
 
         </div>

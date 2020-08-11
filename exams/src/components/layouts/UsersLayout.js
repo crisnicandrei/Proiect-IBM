@@ -1,15 +1,14 @@
 import React from 'react'
 import { useState, useContext } from 'react'
 //Import Icons
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit, FaLock, FaUserAlt, FaUsers } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { LoginContext } from '../LoginContext';
 import { Form } from 'react-bootstrap'
 import { AiFillCalendar } from 'react-icons/ai';
-import { GoCalendar } from 'react-icons/go';
-import { FaSchool } from 'react-icons/fa';
 
-import { putter,getter } from '../Constants/APIHandler'
+
+import { putter, getter } from '../Constants/APIHandler'
 
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
@@ -51,7 +50,7 @@ export default function UsersLayout({ username, password, usertype, removeUsers,
       }
       else {
         setErrorOption(false);
-        putter(UPDATE_API,userUpdate)
+        putter(UPDATE_API, userUpdate)
           .then(() => {
             setShow(true);
             getter(LOGIN_API).then(res => {
@@ -81,17 +80,17 @@ export default function UsersLayout({ username, password, usertype, removeUsers,
 
 
             <Form.Group controlId="formBasicUsername">
-              <Form.Label><AiFillCalendar className="form-icons" />Username</Form.Label>
+              <Form.Label><FaUserAlt className="form-icons" />Username</Form.Label>
               <Form.Control type="text" name='Username' value={Username} onChange={(e) => setUsername(e.target.value)} readOnly />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label><GoCalendar className="form-icons" />Password</Form.Label>
+              <Form.Label><FaLock className="form-icons" />Password</Form.Label>
               <Form.Control type="text" name='Password' value={Password} onChange={(e) => setPassword(e.target.value)} />
             </Form.Group>
 
             <Form.Group controlId="formBasicUsertype">
-              <Form.Label><FaSchool className="form-icons" />Usertype</Form.Label>
+              <Form.Label><FaUsers className="form-icons" />Usertype</Form.Label>
               <Form.Control type="text" name='Usertype' value={Usertype} onChange={(e) => setUsertype(e.target.value)} />
             </Form.Group>
 
