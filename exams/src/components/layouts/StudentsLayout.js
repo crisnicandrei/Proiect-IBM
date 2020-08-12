@@ -3,7 +3,7 @@ import { useState, useContext } from 'react'
 //Import Icons
 import { FaEdit } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
-import { LoginContext } from '../LoginContext';
+import { StudentContext } from '../LoginContext';
 import { Form } from 'react-bootstrap'
 import { AiFillCalendar } from 'react-icons/ai';
 import { GoCalendar } from 'react-icons/go';
@@ -14,9 +14,9 @@ import { putter, getter } from '../Constants/APIHandler'
 import Alert from 'react-bootstrap/Alert';
 
 
-export default function StudentsLayout({ name, faculty, yearOfStudy, removeStudent, userId }) {
+export default function StudentsLayout({ name, faculty, yearOfStudy, removeStudent, studId }) {
 
-    const [, setUser] = useContext(LoginContext)
+    const [, setStudent] = useContext(StudentContext)
     const [isEditing, setEditing] = useState(false);
     const [Name, setName] = useState(name);
     const [Faculty, setFaculty] = useState(faculty);
@@ -27,7 +27,7 @@ export default function StudentsLayout({ name, faculty, yearOfStudy, removeStude
     const [errorEmpty, setErrorEmpty] = useState(false);
     const [errorOption, setErrorOption] = useState(false);
 
-    const UPDATE_API = `http://localhost:9191/updateUser/${userId}`
+    const UPDATE_API = `http://localhost:9191/updateStudents/${studId}`
     const LOGIN_API = 'http://localhost:9191/students'
     function handleEdit() {
         setEditing(!isEditing)
@@ -43,7 +43,7 @@ export default function StudentsLayout({ name, faculty, yearOfStudy, removeStude
 
     function handleSubmit(e) {
         e.preventDefault();
-        const userUpdate = {
+        const studentUpdate = {
             name: Name,
             faculty: Faculty,
             yearOfStudy: YearOfStudy
@@ -54,11 +54,11 @@ export default function StudentsLayout({ name, faculty, yearOfStudy, removeStude
             }
             else {
                 setErrorOption(false);
-                putter(UPDATE_API, userUpdate)
+                putter(UPDATE_API, studentUpdate)
                     .then(() => {
                         setShow(true);
                         getter(LOGIN_API).then(res => {
-                            setUser(res.data);
+                            setStudent(res.data);
                         })
                     })
                 setEditing(false);
