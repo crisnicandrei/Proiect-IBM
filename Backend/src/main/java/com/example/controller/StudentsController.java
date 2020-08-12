@@ -35,6 +35,11 @@ public class StudentsController {
         return studentsService.getExams();
     }
 
+    @PutMapping("/updateStudents/{id}")
+    public Students updateStudent(@RequestBody Students students, @PathVariable long id) {
+        return studentsService.updateStudent(students,id);
+    }
+
     @GetMapping("/students/exams/{yearOfStudy}")
     public List<Exam> findExamsYearOfStudy(@PathVariable int yearOfStudy) {
         return studentsService.findByYoS(yearOfStudy);

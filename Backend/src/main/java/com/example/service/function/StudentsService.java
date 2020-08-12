@@ -27,6 +27,14 @@ public class StudentsService {
         return studentsRepository.save(students);
     }
 
+    public Students updateStudent(Students students, long id) {
+        Students existingStudent = studentsRepository.findById(id).orElse(students);
+        existingStudent.setName(students.getName());
+        existingStudent.setYearOfStudy(students.getYearOfStudy());
+        existingStudent.setFaculty(students.getFaculty());
+        return studentsRepository.save(existingStudent);
+    }
+
     public String deleteStudent(long id) {
         studentsRepository.deleteById(id);
         return "Removed";
@@ -43,4 +51,6 @@ public class StudentsService {
     public List<Exam> findByFaculty(String faculty) {
         return  examRepository.findByFaculty(faculty);
     }
+
+
 }
